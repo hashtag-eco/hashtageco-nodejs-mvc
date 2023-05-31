@@ -22,7 +22,7 @@ app.get("/home", homeController.home);
 app.get("/product", productController.product);
 app.get("/productdetail", productController.productdetail);
 app.get("/map", mapController.map);
-app.get("/singup", userController.signup);
+app.get("/signup", userController.signup);
 app.get("/login", userController.login);
 app.get("/profile", userController.profile);
 app.get("/productscrap", scrapController.productscrap);
