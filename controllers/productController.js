@@ -1,3 +1,5 @@
+db = require("../dbconnection")
+
 exports.product = (req, res) => {
   res.render("product");
 };

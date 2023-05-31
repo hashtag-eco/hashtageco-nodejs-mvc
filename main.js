@@ -12,6 +12,9 @@ const express = require("express"),
   scrapController = require("./controllers/scrapController");
 
 app.set("view engine", "ejs");
+app.use(express.static(`${__dirname}/public`));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // public 경로 지정
 app.use(express.static(`${__dirname}/public`));
