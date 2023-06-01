@@ -24,6 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // public 경로 지정
 app.use(express.static(`${__dirname}/public`));
+
+//기본 미들웨어 함수로 등록
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
