@@ -13,6 +13,7 @@
             integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
             crossorigin="anonymous"
         />
+        
     </head>
 
     <body>
@@ -55,6 +56,24 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
+<!-- 상품 카테고리 버튼  -->
+<% let category; %>
+          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <form method = "get"> </form>
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1"  value = "<%= category %>"  autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">제로웨이스트 상품</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" value = "<%= category %>" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">저탄소 상품</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" value = "<%= category %>" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio3">업사이클링 상품</label>
+          </div>
+          <div>
+            <% -include('partials/<%= category %>') %>
+          </div>
+
+
 
           <script
           src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

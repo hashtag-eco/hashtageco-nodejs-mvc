@@ -1,6 +1,7 @@
 require('dotenv').config();
 //설치한 mysql 모듈 불러오기
 const mysql = require('mysql2/promise');
+//const Connection = require('mysql2/typings/mysql/lib/Connection');
 
 //연결 설정 셋팅
 const db = mysql.createPool({
@@ -13,4 +14,16 @@ const db = mysql.createPool({
         insecureAuth: true
 });
 
-module.export= db;
+//db.getConnection();
+// db.query('SELECT * FROM UpcyclingProduct;',function(err, results, fields) {
+
+//         if (err) {
+//                 console.log(err);
+//         }
+
+//         console.log(results);
+// });
+
+// db.end();
+
+module.exports= db;
