@@ -1,22 +1,23 @@
-require('dotenv').config();
+require("dotenv").config();
 const port = 3000;
 const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts"),
   bodyParser = require("body-parser"),
   http = require("http").createServer(app),
-  errorController = require('./controllers/errorController'),
+  errorController = require("./controllers/errorController"),
   //Router 모듈 사용
-  home = require('./routes/homeRoute'),
-  map = require('./routes/mapRoute'),
-  product = require('./routes/productRoute'),
-  productdetail = require('./routes/productDetailRoute'),
-  productscrap = require('./routes/productScrapRoute'),
-  mapscrap = require('./routes/mapScrapRoute'),
-  user = require('./routes/userRoutes');
-  
+  home = require("./routes/homeRoute"),
+  map = require("./routes/mapRoute"),
+  product = require("./routes/productRoute"),
+  productdetail = require("./routes/productDetailRoute"),
+  productscrap = require("./routes/productScrapRoute"),
+  mapscrap = require("./routes/mapScrapRoute"),
+  user = require("./routes/userRoutes");
+
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
+
 //기본 미들웨어 함수로 등록
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,15 +31,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(layouts);
 
 //라우터 호출
-app.use('/', home);
-app.use('/home', home);
-app.use('/map', map);
-app.use('/product', product);
-app.use('/productdetail', productdetail);
-app.use('/productscrap', productscrap);
-app.use('/mapscrap', mapscrap);
-app.use('/user', user);
-
+app.use("/", home);
+app.use("/home", home);
+app.use("/map", map);
+app.use("/product", product);
+app.use("/productdetail", productdetail);
+app.use("/productscrap", productscrap);
+app.use("/mapscrap", mapscrap);
+app.use("/user", user);
 
 //에러 처리 위한 미들웨어 사용
 app.use(errorController.logErrors);
