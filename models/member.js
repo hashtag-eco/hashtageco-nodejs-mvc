@@ -20,11 +20,15 @@ module.exports = (sequelize, Sequelize) => {
        password: {
            type: Sequelize.STRING(16),
            allowNull: true
+       },
+       profile:{
+           type: Sequelize.BLOB,
+           allowNull: true
        }
    },
    {
        timestamps: false, 
-       tableName: 'chat'
+       tableName: 'Member'
    });
-   return chat;
+   return member;
 }

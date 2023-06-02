@@ -1,21 +1,43 @@
-db = require("../dbconnection")
+const db = require("../models/index"),
+  Product = db.product,
+  Op = db.Sequelize.Op;
+
+// const ProductStorage = require("../models/ProductStorage");
+// const db = require("../models/ProductStorage"); 
+// const result = {
+//   product_result : async (req, res, next) => {
+//     let body = zeroWaste;
+//     const dbs = await db.ProductByCategoty(body);
+//     return res
+//   }
+// };
 
 exports.product = (req, res) => {
   res.render("product");
 };
 
-exports.zeroWasteProduct = (req, res) => {
-  //let data = 
-  //res.render("product", {items : data});
-  res.render("/productByCategory/zeroWasteProduct");
-};
+//제로웨이스트 상품 목록 가져오는 함수
+exports.getZeroWasteProduct = async () => {
+  console.log("controller함수 안");
+  try {
+    const zwlist = await Product.findAll({
+      attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
+      //where : {}
+    })
+    console.log(zwlist);
+    console.log("데이터받아옴");
+    res.render("prouct");
+  }catch (err) {
+    return err;
+  }
+}
 
 exports.lowCarbonProduct = (req, res) => {
-  res.render("/productByCategory/lowCarboneProduct");
+  res.render("productByCategory/lowCarbonProduct");
 };
 
 exports.upcyclingProduct = (req, res) => {
-  res.render("/productByCategory/upcyclingProduct");
+  res.render("productByCategory/upcyclingProduct");
 };
 
 
