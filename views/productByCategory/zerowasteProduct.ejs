@@ -95,54 +95,52 @@
             <p>
               <!-- 해시태그 버튼 -->
               <!-- 버튼 라우트 설정 아직 안됨 -->
-              <a href="/product/zeroWaste" class="btn btn-primary my-2" selected="false">제로웨이스트</a>
-              <a href="/product/upcycling" class="btn btn-primary my-2">업사이클링</a>
-              <a href="/product/lowCarbon" class="btn btn-primary my-2">저탄소</a>
+              <a href="/product/zeroWasteProduct" class="btn btn-primary my-2" selected="false">제로웨이스트</a>
+              <a href="/product/upcyclingProduct" class="btn btn-primary my-2">업사이클링</a>
+              <a href="/product/lowCarbonProduct" class="btn btn-primary my-2">저탄소</a>
              
             </p>
           </div>
         </div>
       </section>
-
-
-      <!-- <% list.forEach(s => { %> -->
-        <!-- 상품 나열 전체 -->
       <div class="album py-5 bg-light">
         <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
+      <% list.forEach(s => { %>
+        <!-- 상품 나열 전체 -->
+      
+            
             <!-- 상품 나열 개별 -->
             <!-- 일단 페이지에 상품 15개 띄우는 거로 했지만 상품 1~nnn 까지 반복문 써서 띄워야 할 듯 -->
             <!-- 상품 1 -->
-            <% list.forEach(s => { %>
-
             <div class="col">
-                
               <div class="card shadow-sm">
                 <svg
                   class="bd-placeholder-img card-img-top"
                   width="100%"
-                  height="225"
+                  height="0"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
                   aria-label="Placeholder: Thumbnail"
                   preserveAspectRatio="xMidYMid slice"
                   focusable="false"
                 >
+                <img src="<%=s.dataValues.image_link%>"/>
                   <title>Placeholder</title>
                   <rect width="100%" height="100%" fill="#55595c" />
                 </svg>
-
+                <!-- <img src="<%=s.dataValues.image_link%>"/> -->
                 <div class="card-body">
                   <p class="card-text" style="font-weight: bold">
                     <%= s.dataValues.product_name %>
                   </p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
+                  <p class="card-text"><%= s.dataValues.price %>원</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <!-- 버튼 라우트 설정 아직 안됨 -->
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" onClick="">Detail</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" selected="true">Scrap</button>
                     </div>
                     <!-- 스크랩수 정렬 구현 못하면 지우기 -->
                     <small class="text-muted">스크랩수 넣기</small>
