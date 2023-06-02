@@ -2,22 +2,14 @@ const db = require("../models/index"),
   Product = db.product,
   Op = db.Sequelize.Op;
 
-// const ProductStorage = require("../models/ProductStorage");
-// const db = require("../models/ProductStorage"); 
-// const result = {
-//   product_result : async (req, res, next) => {
-//     let body = zeroWaste;
-//     const dbs = await db.ProductByCategoty(body);
-//     return res
-//   }
-// };
+
 
 exports.product = (req, res) => {
   res.render("product");
 };
 
 //제로웨이스트 상품 목록 가져오는 함수
-exports.getZeroWasteProduct = async () => {
+exports.getZeroWasteProduct = async (req, res) => {
   console.log("controller함수 안");
   try {
     const zwlist = await Product.findAll({
@@ -29,8 +21,8 @@ exports.getZeroWasteProduct = async () => {
     res.render("productByCategory/zerowasteProduct", {list : zwlist});
   }catch (err) {
     return err;
-  }
-}
+  };
+};
 
 exports.lowCarbonProduct = (req, res) => {
   res.render("productByCategory/lowCarbonProduct");
