@@ -4,7 +4,6 @@ Op = db.Sequelize.Op;
 
 exports.signup = async (req, res) => {
   // 회원 가입
-
   db.member
     .create({
       // create
@@ -15,7 +14,6 @@ exports.signup = async (req, res) => {
     })
     .then((result) => {
       console.log("회원가입 완료");
-      res.send("<script>alert('회원가입이 완료되었습니다.');</script>");
       res.render("home");
     })
     .catch((err) => {
