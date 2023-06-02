@@ -10,6 +10,7 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true, // 추가
         allowNull: false,
         primaryKey: true,
+        unique: true,
       },
       name: {
         type: Sequelize.STRING(10),

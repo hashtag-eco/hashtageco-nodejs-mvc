@@ -7,7 +7,7 @@ exports.signup = async (res, req) => {
   db.member
     .create({
       // create
-      member_id: req.body.member_id,
+      // member_id: req.body.member_id,
       name: req.body.name,
       nickname: req.body.nickname,
       email: req.body.email,
@@ -15,13 +15,13 @@ exports.signup = async (res, req) => {
     })
     .then((result) => {
       console.log("회원가입 완료");
-      res.send("<script>alert('회원가입을 완료했습니다.');<script>");
-      res.render("home");
+      // res.render("home");
+      res.send("<script>alert('회원가입이 완료되었습니다.');location.href='/home';</script>");
     })
     .catch((err) => {
       console.log(err);
       console.log("회원가입 실패");
-      res.send("<script>alert('회원가입에 실패하였습니다.');</script>");
+      res.send("<script>alert('회원가입에 실패하였습니다.');location.href='/signup';</script>");
     });
 };
 
