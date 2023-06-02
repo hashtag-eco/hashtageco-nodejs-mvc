@@ -2,12 +2,9 @@ const db = require("../models/index"),
   Member = db.member;
 Op = db.Sequelize.Op;
 
-exports.signup = (req, res) => {
-  res.render("signup");
-};
 exports.signup = async (req, res) => {
   // 회원 가입
-  res.render("signup");
+
   db.member
     .create({
       // create
@@ -24,7 +21,7 @@ exports.signup = async (req, res) => {
     .catch((err) => {
       console.log(err);
       console.log("회원가입 실패");
-      res.send("<script>alert('이미 사용중인 이메일입니다.');location.href='/user/signUp';</script>");
+      res.send("<script>alert('이미 사용중인 이메일입니다.');location.href='/signup';</script>");
     });
 };
 
