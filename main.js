@@ -10,10 +10,15 @@ const express = require("express"),
   home = require('./routes/homeRoute'),
   map = require('./routes/mapRoute'),
   product = require('./routes/productRoute'),
+  zeroWasteProduct = require('./routes/zeroWasteProductRoute'),
+  upcyclingProduct = require('./routes/upcyclingProductRoute'),
+  lowCarbonProduct = require('./routes/lowCarbonProductRoute'),
   productdetail = require('./routes/productDetailRoute'),
   productscrap = require('./routes/productScrapRoute'),
   mapscrap = require('./routes/mapScrapRoute'),
-  user = require('./routes/userRoute');
+  signup = require('./routes/signupRoute'),
+  profile = require('./routes/profileRoute'),
+  login = require('./routes/loginRoute');
   
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
@@ -37,10 +42,15 @@ app.use("/", home);
 app.use("/home", home);
 app.use("/map", map);
 app.use("/product", product);
+app.use("/upcyclingProduct", upcyclingProduct);
+app.use("/zeroWasteProduct", zeroWasteProduct);
+app.use("/lowCarbonProduct", lowCarbonProduct);
 app.use("/productdetail", productdetail);
 app.use("/productscrap", productscrap);
 app.use("/mapscrap", mapscrap);
-app.use("/user", user);
+app.use("/login", login);
+app.use("/profile", profile);
+app.use("/signup", signup);
 
 //에러 처리 위한 미들웨어 사용
 app.use(errorController.logErrors);
