@@ -1,5 +1,3 @@
-<!-- 상품 나열 view -->
-
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -97,33 +95,29 @@
             <p>
               <!-- 해시태그 버튼 -->
               <!-- 버튼 라우트 설정 아직 안됨 -->
-              <!-- <form class="" action="/product/zeroWaste" method="post">
-                <input type="radio" class="btn-check" name="zeroWaste" id="btnradio1" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio1">제로웨이스트</label>
-              </form>
-                <input type="radio" class="btn-check" name="upcycling" id="btnradio2" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio2">업사이클링</label>
-
-                <input type="radio" class="btn-check" name="lowCarbon" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio3">저탄소</label>
-               -->
-
-              <a href="/product/zeroWaste" class="btn btn-primary my-2">제로웨이스트</a>
+              <a href="/product/zeroWaste" class="btn btn-primary my-2" selected="false">제로웨이스트</a>
               <a href="/product/upcycling" class="btn btn-primary my-2">업사이클링</a>
-              <a href="#" class="btn btn-primary my-2">저탄소</a> 
+              <a href="/product/lowCarbon" class="btn btn-primary my-2">저탄소</a>
+             
             </p>
           </div>
         </div>
       </section>
 
-      <!-- 상품 나열 전체 -->
+
+      <!-- <% list.forEach(s => { %> -->
+        <!-- 상품 나열 전체 -->
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
             <!-- 상품 나열 개별 -->
             <!-- 일단 페이지에 상품 15개 띄우는 거로 했지만 상품 1~nnn 까지 반복문 써서 띄워야 할 듯 -->
             <!-- 상품 1 -->
+            <% list.forEach(s => { %>
+
             <div class="col">
+                
               <div class="card shadow-sm">
                 <svg
                   class="bd-placeholder-img card-img-top"
@@ -140,7 +134,9 @@
                 </svg>
 
                 <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
+                  <p class="card-text" style="font-weight: bold">
+                    <%= s.dataValues.product_name %>
+                  </p>
                   <p class="card-text">넣을 내용있으면 넣으셈</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -154,426 +150,13 @@
                 </div>
               </div>
             </div>
-            <!-- 상품 2 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
 
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 3 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 4 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 5 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 6 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 7 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 8 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 9 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 10 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 11 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 12 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 13 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 14 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 상품 15 -->
-            <div class="col">
-              <div class="card shadow-sm">
-                <svg
-                  class="bd-placeholder-img card-img-top"
-                  width="100%"
-                  height="225"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-label="Placeholder: Thumbnail"
-                  preserveAspectRatio="xMidYMid slice"
-                  focusable="false"
-                >
-                  <title>Placeholder</title>
-                  <rect width="100%" height="100%" fill="#55595c" />
-                </svg>
-
-                <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">상품 이름</p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
-                    </div>
-                    <small class="text-muted">스크랩수 넣기</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <% }) %>
+      
+            
+            
+    
+           
           </div>
         </div>
       </div>
