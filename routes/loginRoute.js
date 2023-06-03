@@ -3,7 +3,7 @@ const router = require("express").Router(),
   loginController = require("../controllers/loginController");
 
 router.get("/", homeController.login);
-app.post("/", async (req, res) => {
+router.post("/", async (req, res) => {
   loginController.login(res, req);
 });
 

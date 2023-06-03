@@ -1,5 +1,5 @@
 const db = require("../models/index"),
-  member = db.member;
+  Member = db.member;
 Op = db.Sequelize.Op;
 
 /*로그인*/
@@ -40,9 +40,8 @@ exports.login = async (res, req) => {
 exports.logout = function (req, res) {
   console.log(req.session);
   req.session = null;
-  console.log("로그아웃");
-  res.send("<script>alert('로그아웃되었습니다');</script>");
-  res.render("home");
+  console.log("로그아웃 성공");
+  res.send("<script>alert('로그아웃에 성공하였습니다.');location.href='/home';</script>");
 };
 
 /*로그인 사용자 상품 스크랩 리스트*/

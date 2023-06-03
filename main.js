@@ -18,7 +18,8 @@ const express = require("express"),
   mapscrap = require("./routes/mapScrapRoute"),
   signup = require("./routes/signupRoute"),
   profile = require("./routes/profileRoute"),
-  login = require("./routes/loginRoute");
+  login = require("./routes/loginRoute"),
+  logout = require("./routes/logoutRoute"); // 로그아웃 라우터 추가
 
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
