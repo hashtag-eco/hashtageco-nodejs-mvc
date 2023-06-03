@@ -4,6 +4,7 @@ const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts"),
   bodyParser = require("body-parser"),
+  session = require("express-session"), // 추가
   http = require("http").createServer(app),
   errorController = require("./controllers/errorController"),
   //Router 모듈 사용
@@ -63,3 +64,12 @@ app.use(errorController.respondInternalError);
 app.listen(port, () => {
   console.log(`Listeninig to port ${port}`);
 });
+
+// session 관련 코드 추가
+// app.use(
+//   session({
+//     secret: "keyboard cat",
+//     resave: false,
+//     saveUninitialize: true,
+//   })
+// );
