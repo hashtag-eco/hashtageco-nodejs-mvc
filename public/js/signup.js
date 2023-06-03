@@ -1,11 +1,11 @@
-//회원가입 관련 js
+// 회원가입 관련 js
 document.getElementById("signup-form").onsubmit = function () {
-  //signup.ejs에 form한 정보 가져오기
+  // signup.ejs에 form한 정보 가져오기
+  console.log("signup.js로 이동 성공"); // 제대로 이동했는지 체크
   let name = this.name.value;
   let nickname = this.nickname.value;
   let email = this.email.value;
   let password = this.password.value;
-  let passwordCheck = this.passwordCheck.value;
   let check = true;
 
   //이메일 오류
@@ -25,6 +25,7 @@ document.getElementById("signup-form").onsubmit = function () {
     document.getElementById("emailError").innerHTML = "이메일이 올바르지 않습니다.";
     check = false;
   }
+  // 이메일 중복 오류
 
   //이름 공백 오류
   if (name === "") {
@@ -57,13 +58,6 @@ document.getElementById("signup-form").onsubmit = function () {
     check = false;
   } else {
     document.getElementById("passwordError").innerHTML = "";
-  }
-  //비밀번호 확인 공백
-  if (passwordCheck === "") {
-    document.getElementById("passwordCheckError").innerHTML = "비밀번호를 다시 입력해주세요.";
-    check = false;
-  } else {
-    document.getElementById("passwordCheckError").innerHTML = "";
   }
 
   return check;

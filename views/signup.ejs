@@ -24,6 +24,10 @@
     <!-- signup.css 불러오기 -->
     <link rel="stylesheet" href="./css/signup.css" />
 
+    <!-- signup.js 불러오기 -->
+    <script src="./js/signup.js"></script>
+    <script src="../public/js/signup.js"></script>
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180" />
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
@@ -123,7 +127,7 @@
                 <!-- 비밀번호 입력 -->
                 <div class="col-12">
                   <label for="address" class="form-label">Password</label>
-                  <input name="password" id="password" type="text" class="form-control" placeholder="비밀번호를 입력해주세요 (8자리 이상 16자리 이하)" required />
+                  <input name="password" id="password" type="password" class="form-control" placeholder="비밀번호를 입력해주세요 (8자리 이상 16자리 이하)" required />
                   <div id="passwordError" class="invalid-feedback">비밀번호를 다시 입력해주세요</div>
                 </div>
               </div>
@@ -135,7 +139,8 @@
               <!-- 회원가입완료 버튼 -->
               <div>
                 <button id="signupButton" class="w-100 btn btn-primary btn-lg" type="submit">가입 완료하기</button>
-                <script src="js/signup.js"></script>
+                <!-- <script src="js/signup.js"></script> -->
+                <script src="../public/js/signup.js"></script>
               </div>
               <!-- 로그인 페이지로 이동 -->
               <a href="login"> <p class="text-center mt-4 mb-3 text-muted">회원가입 페이지로 이동</p></a>
@@ -163,6 +168,7 @@
     ></script>
 
     <!-- signup.js 불러오기 -->
-    <script src="./js/singup.js"></script>
+    <script src="./js/signup.js"></script>
+    <script src="../public/js/signup.js"></script>
   </body>
 </html>
