@@ -6,3 +6,8 @@ exports.home = (req, res) => {
 exports.join = (req, res) => {
   res.render("signup");
 };
+
+// 로그인 view
+exports.login = (req, res) => {
+  res.render("login");
+};

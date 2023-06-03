@@ -7,19 +7,19 @@ const express = require("express"),
   http = require("http").createServer(app),
   errorController = require("./controllers/errorController"),
   //Router 모듈 사용
-  home = require('./routes/homeRoute'),
-  map = require('./routes/mapRoute'),
-  product = require('./routes/productRoute'),
-  zeroWasteProduct = require('./routes/zeroWasteProductRoute'),
-  upcyclingProduct = require('./routes/upcyclingProductRoute'),
-  lowCarbonProduct = require('./routes/lowCarbonProductRoute'),
-  productdetail = require('./routes/productDetailRoute'),
-  productscrap = require('./routes/productScrapRoute'),
-  mapscrap = require('./routes/mapScrapRoute'),
-  signup = require('./routes/signupRoute'),
-  profile = require('./routes/profileRoute'),
-  login = require('./routes/loginRoute');
-  
+  home = require("./routes/homeRoute"),
+  map = require("./routes/mapRoute"),
+  product = require("./routes/productRoute"),
+  zeroWasteProduct = require("./routes/zeroWasteProductRoute"),
+  upcyclingProduct = require("./routes/upcyclingProductRoute"),
+  lowCarbonProduct = require("./routes/lowCarbonProductRoute"),
+  productdetail = require("./routes/productDetailRoute"),
+  productscrap = require("./routes/productScrapRoute"),
+  mapscrap = require("./routes/mapScrapRoute"),
+  signup = require("./routes/signupRoute"),
+  profile = require("./routes/profileRoute"),
+  login = require("./routes/loginRoute");
+
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
 
@@ -49,6 +49,7 @@ app.use("/productdetail", productdetail);
 app.use("/productscrap", productscrap);
 app.use("/mapscrap", mapscrap);
 app.use("/login", login);
+app.use("/logout", logout); //로그아웃 라우터 추가
 app.use("/profile", profile);
 app.use("/signup", signup);
 

@@ -47,32 +47,32 @@ exports.logout = function (req, res) {
 
 /*로그인 사용자 상품 스크랩 리스트*/
 // 아직 수정 중
-const getProductList = async (id) => {
-  try {
-    const ProductList = await member.findAll({
-      attributes: ["Name", "color"],
-      where: {
-        member_id: id,
-      },
-    });
-    return ProductList;
-  } catch (err) {
-    return err;
-  }
-};
+// const getProductList = async (id) => {
+//   try {
+//     const ProductList = await member.findAll({
+//       attributes: ["Name", "color"],
+//       where: {
+//         member_id: id,
+//       },
+//     });
+//     return ProductList;
+//   } catch (err) {
+//     return err;
+//   }
+// };
 
 /*로그인 사용자 스토어 스크랩 리스트*/
 // 아직 수정 중
-const getStoreList = async (id) => {
-  try {
-    const StoreList = await member.findAll({
-      attributes: ["Name", "color"],
-      where: {
-        member_id: id,
-      },
-    });
-    return StoreList;
-  } catch (err) {
-    return err;
-  }
-};
+// const getStoreList = async (id) => {
+//   try {
+//     const StoreList = await member.findAll({
+//       attributes: ["Name", "color"],
+//       where: {
+//         member_id: id,
+//       },
+//     });
+//     return StoreList;
+//   } catch (err) {
+//     return err;
+//   }
+// };
