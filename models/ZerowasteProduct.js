@@ -1,6 +1,6 @@
 //define()을 통해 엔티티 정의
 module.exports = (sequelize, Sequelize) => {
-  //console.log("product model 안1");
+  console.log("product model 안1");
   const product = sequelize.define(
     "product",
     {

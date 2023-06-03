@@ -15,12 +15,33 @@ exports.getZeroWasteProduct = async (req, res) => {
   console.log("controller함수 안");
   try {
     const zwlist = await ZProduct.findAll({
-      attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
+      attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand']
       //where : {}
     })
     //console.log(zwlist);
     console.log("데이터받아옴");
     res.render("productByCategory/zerowasteProduct", {list : zwlist});
+  }catch (err) {
+    return err;
+  };
+};
+
+exports.goZeroWasteProductDetail = async (req, res) => {
+  try {
+    console.log("11");
+    console.log(req.params.productId);
+    const id = req.params.productId[0];
+    console.log(id);
+    console.log("a1");
+    const zwdetail = await ZProduct.findAll({
+      attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
+      where: {
+        product_id: id
+      }
+    })
+    console.log("a");
+    console.log(zwdetail);
+    res.render("productDetail", {details: zwdetail});
   }catch (err) {
     return err;
   };

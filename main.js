@@ -6,6 +6,7 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   http = require("http").createServer(app),
   errorController = require("./controllers/errorController"),
+  productController = require('./controllers/productController'),
   //Router 모듈 사용
   home = require('./routes/homeRoute'),
   map = require('./routes/mapRoute'),
@@ -45,7 +46,7 @@ app.use("/product", product);
 app.use("/upcyclingProduct", upcyclingProduct);
 app.use("/zeroWasteProduct", zeroWasteProduct);
 app.use("/lowCarbonProduct", lowCarbonProduct);
-app.use("/productdetail", productdetail);
+app.use("/productdetail/:productId", productController.goZeroWasteProductDetail);
 app.use("/productscrap", productscrap);
 app.use("/mapscrap", mapscrap);
 app.use("/login", login);
