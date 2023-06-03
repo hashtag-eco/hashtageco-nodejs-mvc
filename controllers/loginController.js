@@ -7,9 +7,9 @@ exports.login = async (res, req) => {
   var responseData;
   console.log("로그인 검사");
 
-  models.member
+  db.member
     .findOne({
-      where: { memberMail: req.body.mail, password: req.body.pw },
+      where: { name: req.body.name, password: req.body.password },
     })
     .then(function (user) {
       if (user == null) {
