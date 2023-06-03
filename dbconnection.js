@@ -14,8 +14,8 @@ const db = mysql.createPool({
         insecureAuth: true
 });
 
-//db.getConnection();
-// db.query('SELECT * FROM UpcyclingProduct;',function(err, results, fields) {
+// db.getConnection();
+// db.query('SELECT * FROM ZeroWasteProduct;',function(err, results, fields) {
 
 //         if (err) {
 //                 console.log(err);
