@@ -1,11 +1,11 @@
 //회원가입 관련 js
-document.getElementById("signup-form").onsubmit = function () {
+document.getElementById("signup-form") = function check() {
   //signup.ejs에 form한 정보 가져오기
-  let email = this.email.value;
-  let name = this.name.value;
-  let password = this.password.value;
-  let passwordCheck = this.passwordCheck.value;
-  let check = true;
+  let email = doucument.getElementById("email");
+  let name = doucument.getElementById("name");
+  let password = doucument.getElementById("password");
+  let passwordCheck = doucument.getElementById("passwordCheck");
+
 
   //이메일 오류
   if (email.includes("@")) {
@@ -15,7 +15,7 @@ document.getElementById("signup-form").onsubmit = function () {
     if (emailId === "" || emailServer === "") {
       document.getElementById("emailError").innerHTML =
         "이메일이 올바르지 않습니다.";
-      check = false;
+      return false;
     } else {
       document.getElementById("emailError").innerHTML = "";
     }
@@ -24,14 +24,14 @@ document.getElementById("signup-form").onsubmit = function () {
   else {
     document.getElementById("emailError").innerHTML =
       "이메일이 올바르지 않습니다.";
-    check = false;
+    return false;
   }
 
   //이름 오류
   if (name === "") {
     document.getElementById("nameError").innerHTML =
       "이름이 올바르지 않습니다.";
-    check = false;
+    return false;
   } else {
     document.getElementById("nameError").innerHTML = "";
   }
@@ -41,7 +41,7 @@ document.getElementById("signup-form").onsubmit = function () {
     document.getElementById("passwordError").innerHTML = "";
     document.getElementById("passwordCheckError").innerHTML =
       "비밀번호가 동일하지 않습니다.";
-    check = false;
+    return false;
   } else {
     document.getElementById("passwordError").innerHTML = "";
     document.getElementById("passwordCheckError").innerHTML = "";
@@ -50,7 +50,7 @@ document.getElementById("signup-form").onsubmit = function () {
   if (password === "") {
     document.getElementById("passwordError").innerHTML =
       "비밀번호를 입력해주세요.";
-    check = false;
+    return false;
   } else {
     document.getElementById("passwordError").innerHTML = "";
   }
@@ -58,10 +58,10 @@ document.getElementById("signup-form").onsubmit = function () {
   if (passwordCheck === "") {
     document.getElementById("passwordCheckError").innerHTML =
       "비밀번호를 다시 입력해주세요.";
-    check = false;
+      return false;
   } else {
     document.getElementById("passwordCheckError").innerHTML = "";
   }
 
-  return check;
+  return true;
 };
