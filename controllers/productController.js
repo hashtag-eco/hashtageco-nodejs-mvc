@@ -94,7 +94,6 @@ exports.goZeroWasteProductDetail = async (req, res) => {
         product_id: id
       }
     })
-    console.log("a");
     console.log(zwdetail);
     res.render("productDetail", {pdetails: zwdetail});
   }catch (err) {
