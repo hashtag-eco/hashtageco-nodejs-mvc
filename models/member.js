@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       password: {
         type: Sequelize.STRING(16),
-        allowNull: true,
+        allowNull: false, // true에서 false로 변경
       },
       profile: {
         type: Sequelize.BLOB,

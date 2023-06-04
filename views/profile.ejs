@@ -21,9 +21,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- profile.css 불러오기 -->
-    <link rel="stylesheet" href="./css/profile.css" />
-
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180" />
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
@@ -34,6 +31,9 @@
     <meta name="theme-color" content="#712cf9" />
 
     <style>
+      /* .container {
+        max-width: 960px;
+      } */
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -86,7 +86,7 @@
       }
     </style>
   </head>
-  <body class="bg-light">
+  <body>
     <div class="container">
       <main>
         <div class="py-5 text-center">
@@ -99,82 +99,49 @@
         <div class="row g-5 d-flex justify-content-center justify-content-center">
           <!-- 프로필 기본정보 -->
           <!-- 저장된 user의 기본정보들이 불러와져 있어야함-->
+          <!-- 이름, 닉네임, 이메일은 변경 불가능 / 비밀번호만 변경 가능 -->
           <div class="col-md-7 col-lg-8">
             <form class="needs-validation" novalidate>
               <div class="row g-3">
+                <!-- 기존 이름 -->
                 <div class="col-sm-6">
-                  <label for="firstName" class="form-label">First name</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="" value="" required />
-                  <div class="invalid-feedback">Valid first name is required.</div>
+                  <label for="firstName" class="form-label">Name</label>
+                  <input name="name" id="name" type="text" class="form-control" placeholder="기존 이름" value="" required />
+                  <div id="nameError" class="invalid-feedback">이름을 다시 입력해주세요</div>
                 </div>
+                <!-- 기존 닉네임 -->
                 <div class="col-sm-6">
-                  <label for="lastName" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="" value="" required />
-                  <div class="invalid-feedback">Valid last name is required.</div>
+                  <label for="lastName" class="form-label">Nickname</label>
+                  <input name="nickname" id="nickname" type="text" class="form-control" placeholder="기존 닉네임" value="" required />
+                  <div id="nicknameError" class="invalid-feedback">닉네임을 다시 입력해주세요</div>
                 </div>
-
+                <!-- 기존 이메일 -->
                 <div class="col-12">
-                  <label for="username" class="form-label">Username</label>
-                  <div class="input-group has-validation">
-                    <span class="input-group-text">@</span>
-                    <input type="text" class="form-control" id="username" placeholder="Username" required />
-                    <div class="invalid-feedback">Your username is required.</div>
-                  </div>
+                  <label for="email" class="form-label">Email</label>
+                  <input name="email" id="email" type="email" class="form-control" placeholder="기존 이메일" />
+                  <div id="emailError" class="invalid-feedback">이메일을 다시 입력해주세요</div>
                 </div>
-
+                <!-- 기존 비밀번호 -->
                 <div class="col-12">
-                  <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                  <input type="email" class="form-control" id="email" placeholder="you@example.com" />
-                  <div class="invalid-feedback">Please enter a valid email address for shipping updates.</div>
+                  <label for="address" class="form-label">Password</label>
+                  <input name="password" id="password" type="password" class="form-control" placeholder="기존 비밀번호" required />
+                  <div id="passwordError" class="invalid-feedback">비밀번호를 다시 입력해주세요</div>
                 </div>
-
+                <!-- 새로운 비밀번호 -->
                 <div class="col-12">
-                  <label for="address" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="address" placeholder="1234 Main St" required />
-                  <div class="invalid-feedback">Please enter your shipping address.</div>
-                </div>
-
-                <div class="col-12">
-                  <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-                  <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" />
-                </div>
-
-                <div class="col-md-5">
-                  <label for="country" class="form-label">Country</label>
-                  <select class="form-select" id="country" required>
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                  </select>
-                  <div class="invalid-feedback">Please select a valid country.</div>
-                </div>
-
-                <div class="col-md-4">
-                  <label for="state" class="form-label">State</label>
-                  <select class="form-select" id="state" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                  </select>
-                  <div class="invalid-feedback">Please provide a valid state.</div>
-                </div>
-
-                <div class="col-md-3">
-                  <label for="zip" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="zip" placeholder="" required />
-                  <div class="invalid-feedback">Zip code required.</div>
+                  <label for="address" class="form-label">New Password</label>
+                  <input name="password" id="password" type="password" class="form-control" placeholder="새로운 비밀번호 (8자리 이상 16자리 이하)" required />
+                  <div id="passwordError" class="invalid-feedback">비밀번호를 다시 입력해주세요</div>
                 </div>
               </div>
 
               <!-- 위아래 간격 조정 -->
               <br />
               <br />
-              <br />
-
               <!-- 프로필수정 버튼 -->
-              <button class="w-100 btn btn-primary btn-lg" type="submit">프로필 수정하기</button>
+              <button class="w-100 btn btn-primary btn-lg" type="submit">비밀번호 변경하기</button>
 
               <!-- 위아래 간격 조정 -->
-              <br />
-              <br />
               <br />
               <br />
             </form>

@@ -6,7 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들" />
     <meta name="generator" content="Hugo 0.104.2" />
-    <title>navbar</title>
+    <title>HashtagEco</title>
 
     <link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/headers/" />
 
@@ -74,35 +74,35 @@
       }
 
       .sub-menu {
-  position: absolute;
-  background: #182952;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.15s ease-in;
-}
+        position: absolute;
+        background: #182952;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.15s ease-in;
+      }
 
-.sub-menu > li {
-  padding: 16px 28px;
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-}
+      .sub-menu > li {
+        padding: 16px 28px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      }
 
-.sub-menu > li >  a {
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-}
+      .sub-menu > li > a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+      }
 
-.main-menu > li:hover #sub-menu {
-  opacity: 1;
-  visibility: visible;
-}
+      .main-menu > li:hover #sub-menu {
+        opacity: 1;
+        visibility: visible;
+      }
 
-.sub-menu > li >  a:hover {
- text-decoration: underline;
-}
+      .sub-menu > li > a:hover {
+        text-decoration: underline;
+      }
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet" />
+    <!-- <link href="headers.css" rel="stylesheet" /> -->
   </head>
   <body>
     <main>
@@ -112,17 +112,26 @@
             <li class="nav-item">
               <a href="home" class="nav-link link-dark px-2 active" aria-current="page"><b>HashtagEco</b></a>
             </li>
-            <li class="nav-item"><a href="product" class="nav-link link-dark px-2">Eco Product</a>
-            <ul class="sub-menu">
-              <li><a href="zeroWasteProduct" aria-label="subemnu">zeroWaste</a></li>
-              <li><a href="upcyclingProduct" aria-label="subemnu">upcycling</a></li>
-              <li><a href="zeroWasteProduct" aria-label="subemnu">zeroWaste</a></li>
-            </ul>
+            <li class="nav-item">
+              <a href="product" class="nav-link link-dark px-2">Eco Product</a>
+              <ul class="sub-menu">
+                <li><a href="zeroWasteProduct" aria-label="subemnu">zeroWaste</a></li>
+                <li><a href="upcyclingProduct" aria-label="subemnu">upcycling</a></li>
+                <li><a href="zeroWasteProduct" aria-label="subemnu">zeroWaste</a></li>
+              </ul>
             </li>
-            <li class="nav-item"><a href="map" class="nav-link link-dark px-2">Eco Map</a></li>
+            <li class="nav-item"><a href="productscrap" class="nav-link link-dark px-2">Eco Scrap</a></li>
+
+            <li class="nav-item"><a href="profile" class="nav-link link-dark px-2">Eco Profile</a></li>
           </ul>
           <ul class="nav">
-            <li class="nav-item"><a href="login" class="nav-link link-dark px-2">Login</a></li>
+            <!-- 로그인 상태 확인용 -->
+
+            <!-- 로그아웃 상태여서 Logout->Login 만들기 -->
+            <li id="login" class="nav-item"><a href="login" class="nav-link link-dark px-2">Login</a></li>
+            <!-- 로그인 상태여서 Login->Logout 만들기 -->
+            <li id="logout" class="nav-item"><a href="logout" class="nav-link link-dark px-2">Logout</a></li>
+            <!-- 회원가입 링크 -->
             <li class="nav-item"><a href="signup" class="nav-link link-dark px-2">Sign up</a></li>
           </ul>
         </div>
