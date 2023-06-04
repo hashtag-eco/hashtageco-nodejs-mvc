@@ -102,7 +102,7 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet" />
+    <!-- <link href="headers.css" rel="stylesheet" /> -->
   </head>
   <body>
     <main>
@@ -121,10 +121,19 @@
               </ul>
             </li>
             <li class="nav-item"><a href="productscrap" class="nav-link link-dark px-2">Eco Scrap</a></li>
+
             <li class="nav-item"><a href="profile" class="nav-link link-dark px-2">Eco Profile</a></li>
           </ul>
           <ul class="nav">
-            <li class="nav-item"><a href="login" class="nav-link link-dark px-2">Login</a></li>
+            <!-- 로그인됐을때 로그아웃 띄우기 -->
+            <% if(isLogined){ %>
+            <li id="logout" class="nav-item"><a href="logout" class="nav-link link-dark px-2">Logout</a></li>
+            <% } %>
+            <!-- 로그아웃 링크 -->
+            <% if(!isLogined){ %>
+            <li id="login" class="nav-item"><a href="login" class="nav-link link-dark px-2">Login</a></li>
+            <% } %>
+            <!-- 회원가입 링크 -->
             <li class="nav-item"><a href="signup" class="nav-link link-dark px-2">Sign up</a></li>
           </ul>
         </div>

@@ -5,7 +5,8 @@ const express = require("express"),
   layouts = require("express-ejs-layouts"),
   bodyParser = require("body-parser"),
   session = require("express-session"), // 추가
-  http = require("http").createServer(app),
+  FileStore = require("session-file-store")(session), // 추가
+  http = require("http").createServer(app), // 쿠키를 생성하는 웹 서버
   errorController = require("./controllers/errorController"),
   //Router 모듈 사용
   home = require("./routes/homeRoute"),
@@ -36,6 +37,16 @@ app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// session 관련 코드 추가
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialize: true,
+    store: new FileStore(),
+  })
+);
+
 // 레이아웃 사용
 app.use(layouts);
 
@@ -64,12 +75,3 @@ app.use(errorController.respondInternalError);
 app.listen(port, () => {
   console.log(`Listeninig to port ${port}`);
 });
-
-// session 관련 코드 추가
-// app.use(
-//   session({
-//     secret: "keyboard cat",
-//     resave: false,
-//     saveUninitialize: true,
-//   })
-// );
