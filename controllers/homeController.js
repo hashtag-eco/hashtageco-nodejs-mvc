@@ -14,21 +14,20 @@ exports.home = async (req, res) => {
   console.log("session 객체 확인(home) :", req.session);
   // res.render("home");
   if (req.session.login) {
-    //로그인 후 홈 반영 성공
+    //로그인 성공시 홈화면
     try {
-      res.render("home", { isLogined: isLogined });
+      res.render("partials/navbar", { isLogined: isLogined });
     } catch (err) {
       res.status(501).send({
         message: err.message,
       });
     }
   } else {
-    //로그인 후 홈 반영 실패
+    //로그인 실패시 홈화면 (처음 홈화면)
     req.session.login = false;
     req.session.idx = -1;
     // res.render("login");
   }
-  res.render("home");
 };
 
 // 회원 가입 view 랜더링

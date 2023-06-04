@@ -35,37 +35,11 @@ exports.login = async (res, req) => {
     });
 };
 
-/*
-exports.login = async (res, req) => {
-  db.member
-    .findOne({
-      where: { email: req.body.email, password: req.body.password },
-    })
-    .then(function (user) {
-      if (user == null) {
-        // 회원이 아니라면 (user가 member 객체가 아니라면)
-        console.log("로그인 실패");
-        res.send("<script>alert('일치하는 회원정보가 없습니다. 다시 시도해주세요.');location.href='/login';</script>");
-      } else {
-        // 회원이라면 (user가 member 객체라면 session.num값 부여)
-        req.session.is_logined = true;
-        req.session.idx = user.dataValues.member_id;
-        console.log(req.session);
-        console.log("로그인 성공");
-        res.send("<script>alert('로그인에 성공하였습니다.');location.href='/home';</script>");
-        // res.redirect('/');
-      }
-    });
-};
-*/
-
 /*로그아웃*/
 exports.logout = function (req, res) {
-  console.log("req.session :", req.session);
   req.session = null;
-  console.log("req.session.login :", req.session.login, ", req.session.idx :", req.session.idx);
+  console.log("session 객체 확인(logout) :", req.session);
   console.log("로그아웃 성공");
-
   res.send("<script>alert('로그아웃에 성공하였습니다.');location.href='/home';</script>");
 };
 
