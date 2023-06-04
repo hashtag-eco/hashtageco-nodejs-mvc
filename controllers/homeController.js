@@ -26,7 +26,7 @@ exports.home = async (req, res) => {
     //로그인 실패시 홈화면 (처음 홈화면)
     req.session.login = false;
     req.session.idx = -1;
-    // res.render("login");
+    res.render("login");
   }
 };
 
