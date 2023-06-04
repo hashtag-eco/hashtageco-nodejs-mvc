@@ -29,9 +29,10 @@ exports.getZeroWasteProduct = async (req, res) => {
 exports.goZeroWasteProductDetail = async (req, res) => {
   try {
     console.log("11");
-    console.log(req.params.productId);
-    const id = req.params.productId[0];
-    console.log(id);
+    console.log(req.params);
+    console.log(req.params.detailId);
+    const id = req.params.detailId;
+    //console.log(id);
     console.log("a1");
     const zwdetail = await ZProduct.findAll({
       attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
@@ -41,7 +42,7 @@ exports.goZeroWasteProductDetail = async (req, res) => {
     })
     console.log("a");
     console.log(zwdetail);
-    res.render("productDetail", {details: zwdetail});
+    res.render("productDetail", {pdetails: zwdetail});
   }catch (err) {
     return err;
   };

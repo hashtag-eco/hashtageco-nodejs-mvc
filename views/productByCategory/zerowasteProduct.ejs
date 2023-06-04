@@ -107,7 +107,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-      <% list.forEach(s => { %>
+      <% list.forEach(s => { %> 
         <!-- 상품 나열 전체 -->
       
             
@@ -140,6 +140,7 @@
                     <div class="btn-group">
                       <!-- 버튼 라우트 설정 아직 안됨 -->
                       <a href="productdetail/<%= parseInt(s.dataValues.product_id) %>" class="btn btn-primary my-2">Detail</a>
+                      <%= console.log(parseInt(s.dataValues.product_id)); %>
                       <button type="button" class="btn btn-sm btn-outline-secondary" selected="true">Scrap</button>
                     </div>
                     <!-- 스크랩수 정렬 구현 못하면 지우기 -->

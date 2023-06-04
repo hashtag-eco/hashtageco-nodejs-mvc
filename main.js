@@ -46,7 +46,7 @@ app.use("/product", product);
 app.use("/upcyclingProduct", upcyclingProduct);
 app.use("/zeroWasteProduct", zeroWasteProduct);
 app.use("/lowCarbonProduct", lowCarbonProduct);
-app.use("/productdetail/:productId", productController.goZeroWasteProductDetail);
+app.use("/productdetail/:detailId", productController.goZeroWasteProductDetail);
 app.use("/productscrap", productscrap);
 app.use("/mapscrap", mapscrap);
 app.use("/login", login);
