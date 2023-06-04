@@ -1,5 +1,6 @@
-const db = require("../models/index"),
-  ZProduct = db.zproduct,
+const db = require("../models/index");
+db.sequelize.sync(); // 모델 동기화. 모델 없을 때만 새로 만듦.
+const ZProduct = db.zproduct,
   UProduct = db.ucProduct,
   LProduct = db.lcProduct,
   Op = db.Sequelize.Op;
@@ -13,9 +14,16 @@ exports.product = (req, res) => {
 //제로웨이스트 상품 목록 가져오는 함수
 exports.getZeroWasteProduct = async (req, res) => {
   console.log("controller함수 안");
+  let pageNum = req.query.page; // 요청 페이지 넘버
+  let offset = 0;
+  if(pageNum > 1) {
+    offset = 15 *(pageNum - 1); 
+  }
   try {
     const zwlist = await ZProduct.findAll({
-      attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand']
+      attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
+      offset: offset,
+      limit: 15
       //where : {}
     })
     //console.log(zwlist);
@@ -25,6 +33,52 @@ exports.getZeroWasteProduct = async (req, res) => {
     return err;
   };
 };
+
+exports.goProductDetail = async (req, res) => {
+  const pid = req.params.productId;
+  let detailresult;
+  try {
+    switch(req.params.category) {
+      case 'zerowaste': {
+        const zwdetail = await ZProduct.findAll({
+          attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand', 'url_link', 'category1', 'category2', 'mall_name'],
+          where: {
+            product_id: pid
+          }
+        })
+        console.log(zwdetail);
+        detailresult = zwdetail;
+        //res.render("productDetail", {pdetails: zwdetail});
+      }
+
+      case 'upcycling': {
+        const updetail = await UProduct.findAll({
+          attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand', 'url_link', 'category1', 'category2', 'mall_name'],
+          where: {
+            product_id: pid
+          }
+        })
+        detailresult = updetail;
+        //res.render("productDetail", {pdetails: updetail});
+      }
+
+      case 'lowcarbon': {
+        const lcdetail = await LProduct.findAll({
+          attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand', 'url_link', 'category1', 'category2', 'mall_name'],
+          where: {
+            product_id: pid
+          }
+        })
+        detailresult = lcdetail;
+        //res.render("productDetail", {pdetails: lcdetail});
+      }
+
+    }
+    res.render("productDetail", {pdetails: detailresult});
+  }catch (err) {
+    return err;
+  };
+}
 
 exports.goZeroWasteProductDetail = async (req, res) => {
   try {
@@ -51,9 +105,16 @@ exports.goZeroWasteProductDetail = async (req, res) => {
 //저탄소 상품 목록 가져오는 함수
 exports.getLowCarbonProduct = async(req, res) => {
   console.log("controller함수 안");
+  let pageNum = req.query.page; // 요청 페이지 넘버
+  let offset = 0;
+  if(pageNum > 1) {
+    offset = 15 *(pageNum - 1); 
+  }
   try {
     const lclist = await LProduct.findAll({
       attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
+      offset: offset,
+      limit: 15
       //where : {}
     })
     //console.log(lclist);
@@ -67,9 +128,16 @@ exports.getLowCarbonProduct = async(req, res) => {
 //업사이클링 상품 목록 가져오는 함수
 exports.getUpcyclingProduct = async(req, res) => {
   console.log("controller함수 안");
+  let pageNum = req.query.page; // 요청 페이지 넘버
+  let offset = 0;
+  if(pageNum > 1) {
+    offset = 15 *(pageNum - 1); 
+  }
   try {
     const ulist = await UProduct.findAll({
       attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
+      offset: offset,
+      limit: 15
       //where : {}
     })
     //console.log(ulist);

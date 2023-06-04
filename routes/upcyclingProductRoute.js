@@ -2,6 +2,6 @@ const router = require('express').Router(),
     productController = require('../controllers/productController');
 
     console.log("상품라우팅파일");
-router.get("/", productController.getUpcyclingProduct);
+router.get("/:page", productController.getUpcyclingProduct);
 
 module.exports = router;

@@ -19,4 +19,8 @@ db.ucProduct = require("./UcProduct.js")(sequelize, Sequelize);
 db.lcProduct = require("./LProduct.js")(sequelize, Sequelize);
 db.member = require("./member.js")(sequelize, Sequelize);
 
+//관계 정의
+//db.ProductScrap.belongsTo(db.member, {foreignKey : '})
+
+
 module.exports = db;
