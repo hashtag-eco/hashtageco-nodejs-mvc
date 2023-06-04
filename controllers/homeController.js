@@ -16,19 +16,19 @@ exports.home = async (req, res) => {
   if (req.session.login) {
     //로그인 후 홈 반영 성공
     try {
-      res.render("home", { isLogined: isLogined });
+      res.render("navbar", { isLogined: isLogined });
     } catch (err) {
       res.status(501).send({
         message: err.message,
       });
     }
   } else {
-    //로그인 후 홈 반영 실패
+    //로그인 실패
     req.session.login = false;
     req.session.idx = -1;
-    // res.render("login");
+    res.render("login");
   }
-  res.render("home");
+  //res.render("home");
 };
 
 // 회원 가입 view 랜더링
