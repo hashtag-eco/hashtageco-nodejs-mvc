@@ -14,7 +14,6 @@ exports.product = (req, res) => {
 //제로웨이스트 상품 목록 불러오기
 exports.getZeroWasteProduct = async (req, res) => {
   console.log("controller함수 안");
-  //console.log(req.params.page);
   let pageNum = req.params.page; // 요청 페이지 넘버
   let offset = 0;
   if(pageNum > 1) {
@@ -25,9 +24,7 @@ exports.getZeroWasteProduct = async (req, res) => {
       attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
       offset: offset,
       limit: 27
-      //where : {}
     })
-    //console.log(zwlist);
     console.log("데이터받아옴");
     res.render("productByCategory/zerowasteProduct", {list : zwlist});
   }catch (err) {
@@ -49,7 +46,6 @@ exports.getLowCarbonProduct = async(req, res) => {
       attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
       offset: offset,
       limit: 27
-      //where : {}
     })
     //console.log(lclist);
     console.log("데이터받아옴");
@@ -72,7 +68,6 @@ exports.getUpcyclingProduct = async(req, res) => {
       attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
       offset: offset,
       limit: 27
-      //where : {}
     })
     //console.log(ulist);
     console.log("데이터받아옴");
