@@ -1,6 +1,6 @@
-const router = require('express').Router(),
-    scrapController = require('../controllers/scrapController');
+const router = require("express").Router(),
+  scrapController = require("../controllers/scrapController");
 
-router.get("/", scrapController.productscrap);
+router.get("/:memberId", scrapController.productscrap);
 
 module.exports = router;
