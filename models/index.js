@@ -21,6 +21,6 @@ db.member = require("./member.js")(sequelize, Sequelize);
 
 //관계 정의
 //db.ProductScrap.belongsTo(db.member, {foreignKey : '})
-
+db.member.belongsToMany(db.lcProduct, {through: ''});
 
 module.exports = db;
