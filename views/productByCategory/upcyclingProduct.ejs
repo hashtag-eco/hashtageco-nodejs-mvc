@@ -88,16 +88,14 @@
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Album example</h1>
-            <p class="lead text-muted">
-              Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
-            </p>
+            <h1 class="fw-light">Upcycling Product</h1>
+            <p class="lead text-muted">업사이클링 제품 둘러보기</p>
             <p>
               <!-- 해시태그 버튼 -->
               <!-- 버튼 라우트 설정 아직 안됨 -->
-              <a href="zeroWasteProduct" class="btn btn-primary my-2">제로웨이스트</a>
-              <a href="upcyclingProduct" class="btn btn-primary my-2">업사이클링</a>
-              <a href="lowCarbonProduct" class="btn btn-primary my-2">저탄소</a>
+              <a href="/zeroWasteProduct/1" class="btn btn-primary my-2">제로웨이스트</a>
+              <a href="/upcyclingProduct/1" class="btn btn-primary my-2">업사이클링</a>
+              <a href="/lowCarbonProduct/1" class="btn btn-primary my-2">저탄소</a>
             </p>
           </div>
         </div>
@@ -134,7 +132,7 @@
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <!-- 버튼 라우트 설정 아직 안됨 -->
-                      <button type="button" class="btn btn-sm btn-outline-secondary" selected="true" onclick="location.href='productdetail/<%= parseInt(s.dataValues.product_id) %>' ">Detail</button>
+                      <a href="/productdetail/upcycling/<%= parseInt(s.dataValues.product_id) %>" class="btn btn-sm btn-outline-secondary">Detail</a>
                       <button type="button" class="btn btn-sm btn-outline-secondary" selected="true">Scrap</button>
                     </div>
                     <!-- 스크랩수 정렬 구현 못하면 지우기 -->
@@ -147,6 +145,32 @@
             <% }) %>
           </div>
         </div>
+      </div>
+      <div class="py-5 text-center container">
+        <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/1">1</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/2">2</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/3">3</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/4">4</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/5">5</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/6">6</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/7">7</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/8">8</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/9">9</a></li>
+            <li class="page-item"><a class="page-link" href="/upcyclingProduct/10">10</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </main>
 
