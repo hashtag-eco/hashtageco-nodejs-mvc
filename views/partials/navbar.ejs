@@ -6,7 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들" />
     <meta name="generator" content="Hugo 0.104.2" />
-    <title>navbar</title>
+    <title>HashtagEco</title>
 
     <link rel="canonical" href="https://getbootstrap.kr/docs/5.2/examples/headers/" />
 
@@ -125,14 +125,12 @@
             <li class="nav-item"><a href="profile" class="nav-link link-dark px-2">Eco Profile</a></li>
           </ul>
           <ul class="nav">
-            <!-- 로그인됐을때 로그아웃 띄우기 -->
-            <% if(isLogined){ %>
-            <li id="logout" class="nav-item"><a href="logout" class="nav-link link-dark px-2">Logout</a></li>
-            <% } %>
-            <!-- 로그아웃 링크 -->
-            <% if(!isLogined){ %>
+            <!-- 로그인 상태 확인용 -->
+
+            <!-- 로그아웃 상태여서 Logout->Login 만들기 -->
             <li id="login" class="nav-item"><a href="login" class="nav-link link-dark px-2">Login</a></li>
-            <% } %>
+            <!-- 로그인 상태여서 Login->Logout 만들기 -->
+            <li id="logout" class="nav-item"><a href="logout" class="nav-link link-dark px-2">Logout</a></li>
             <!-- 회원가입 링크 -->
             <li class="nav-item"><a href="signup" class="nav-link link-dark px-2">Sign up</a></li>
           </ul>

@@ -10,23 +10,19 @@ const db = require("../models/index"),
 
 // 홈 view 랜더링
 exports.home = async (req, res) => {
-  var isLogined = req.session.login;
+  // sessionStorage.clear(); // 모든 세션 객체 삭제
+  var data = { isLogined: req.session.login, userLogined: req.session.name };
   console.log("session 객체 확인(home) :", req.session);
-  // res.render("home");
-  if (req.session.login) {
-    //로그인 성공시 홈화면
-    try {
-      res.render("partials/navbar", { isLogined: isLogined });
-    } catch (err) {
-      res.status(501).send({
-        message: err.message,
-      });
-    }
+  if (!req.session.login) {
+    //로그인 실패시 홈화면 (기본 홈화면)
+    console.log("session 객체 확인(home-logout) :", req.session);
+    // res.render("partials/navbar", data);
+    res.render("home");
   } else {
-    //로그인 실패시 홈화면 (처음 홈화면)
-    req.session.login = false;
-    req.session.idx = -1;
-    res.render("login");
+    //로그인 성공시 홈화면
+    console.log("session 객체 확인(home-login) :", req.session);
+    // res.render("partials/navbar", data);
+    res.render("home");
   }
 };
 

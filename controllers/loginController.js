@@ -4,43 +4,51 @@ Op = db.Sequelize.Op;
 
 /*로그인*/
 exports.login = async (res, req) => {
-  var responseData;
   console.log("로그인 검사");
-  console.log("session 객체 확인(login) :", req.session);
   db.member
     .findOne({
       where: { email: req.body.email, password: req.body.password },
     })
     .then(function (user) {
       if (user == null) {
-        // user가 member 객체가 아니라면
+        // 로그인 실패 시 (user가 member 객체가 아니라면)
         console.log("로그인 실패");
         res.send("<script>alert('일치하는 회원정보가 없습니다. 다시 시도해주세요.');location.href='/login';</script>");
       } else {
-        //user가 member 객체라면 session.num값 부여
-        if (req.session.num == undefined) {
-          req.session.num = 1;
-          // console.log("Views :", req.session.num);
+        // 로그인 성공 시 (user가 member 객체라면 session.num값 부여)
+        // 아래 if-else 문은 사용자가 이 페이지에 몇번이나 들어왔는지 보여주는 것임
+        if (req.session.view == undefined) {
+          req.session.view = 1;
         } else {
-          req.session.num++;
-          // console.log("Views :", req.session.num);
+          req.session.view++;
         }
         req.session.login = true; // 로그인 true
         req.session.idx = user.dataValues.member_id; // member_id가 유지될 수 있도록 idx를 설정
-        // responseData = '<a href="login" class="nav-link link-dark px-2">Login</a>';
-        console.log("req.session :", req.session);
+        console.log("session 객체 확인(login) :", req.session);
         console.log("로그인 성공");
-        res.send("<script>alert('로그인에 성공하였습니다.');location.href='/home';</script>");
+        // res.send("<script>alert('로그인에 성공하였습니다.');location.href='/home';</script>");
+        req.session.save((err) => {
+          if (err) throw err;
+          res.send("<script>alert('로그인에 성공하였습니다.');location.href='/home';</script>");
+        });
       }
     });
 };
 
 /*로그아웃*/
 exports.logout = function (req, res) {
-  req.session = null;
-  console.log("session 객체 확인(logout) :", req.session);
-  console.log("로그아웃 성공");
-  res.send("<script>alert('로그아웃에 성공하였습니다.');location.href='/home';</script>");
+  console.log("session 객체 확인(logout1) :", req.session);
+  if (req.session.login == true) {
+    req.session.login = false;
+    req.session.idx = -1; // 가지고 있던 사용자 id 버리기
+    req.session.save(function () {
+      console.log("session 객체 확인(logout2) :", req.session);
+      console.log("로그아웃 성공");
+      res.send("<script>alert('로그아웃에 성공하였습니다.');location.href='/home';</script>");
+    });
+  } else {
+    res.send("<script>alert('로그인을 먼저 해주세요.');location.href='/home';</script>");
+  }
 };
 
 /*로그인 사용자 상품 스크랩 리스트*/

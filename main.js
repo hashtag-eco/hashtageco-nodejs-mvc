@@ -24,7 +24,6 @@ const express = require("express"),
   logout = require("./routes/logoutRoute"); // 로그아웃 라우터 추가
 
 app.set("view engine", "ejs");
-app.use(express.static(`${__dirname}/public`));
 
 //기본 미들웨어 함수로 등록
 app.use(bodyParser.json());
