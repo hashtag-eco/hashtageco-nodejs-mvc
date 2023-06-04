@@ -3,6 +3,10 @@ const db = require("../models/index"),
 Op = db.Sequelize.Op;
 
 exports.signup = async (res, req) => {
+  if(req.body.password.length < 8 || req.body.password.length > 16) {
+    res.send("<script>alert('회원가입에 실패했습니다. 비밀번호는 8자리 이상 16 자리 이하여야 합니다.');location.href='/signup';</script>");
+  }
+  else {
   // 회원 가입
   db.member
     .create({
@@ -23,6 +27,7 @@ exports.signup = async (res, req) => {
       console.log("회원가입 실패");
       res.send("<script>alert('회원가입에 실패하였습니다.');location.href='/signup';</script>");
     });
+  }
 };
 
 exports.login = (req, res) => {
