@@ -21,10 +21,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- signup.js 불러오기 -->
-    <script src="./js/signup.js"></script>
-    <script src="../public/js/signup.js"></script>
-
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180" />
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
@@ -92,6 +88,7 @@
   </head>
   <body>
     <div class="container">
+      <!-- <form id="signup-form" name="signup-form" action="/signup" method="post" class="needs-validation" novalidate> -->
       <main>
         <div class="py-5 text-center">
           <!-- h2태그 내부에 적힌 거 변경해도 됨 -->
@@ -104,31 +101,36 @@
           <!-- 회원가입 입력 -->
           <!-- 입력 받을 내용 및 input 변경해도 됨 / 주요 태그들 안에 id값 부여함 -->
           <div class="col-md-7 col-lg-8">
-            <form id="signup-form" action="/signup" method="post" class="needs-validation" novalidate>
+            <form id="signup-form" name="signup-form" action="/signup" method="post">
               <div class="row g-3">
                 <!-- 이름 입력 -->
                 <div class="col-sm-6">
                   <label for="firstName" class="form-label">Name</label>
+                  <!-- input 태그의 required 속성으로 공백오류 처리 -->
                   <input name="name" id="name" type="text" class="form-control" placeholder="이름을 입력해주세요" value="" required />
-                  <div id="nameError" class="invalid-feedback">이름을 다시 입력해주세요</div>
+                  <!-- <div id="nameError" class="invalid-feedback"></div> -->
                 </div>
                 <!-- 닉네임 입력 -->
                 <div class="col-sm-6">
                   <label for="lastName" class="form-label">Nickname</label>
+                  <!-- input 태그의 required 속성으로 공백오류 처리 -->
                   <input name="nickname" id="nickname" type="text" class="form-control" placeholder="닉네임을 입력해주세요" value="" required />
-                  <div id="nicknameError" class="invalid-feedback">닉네임을 다시 입력해주세요</div>
+                  <!-- <div id="nicknameError" class="invalid-feedback"></div> -->
                 </div>
                 <!-- 이메일 입력 -->
                 <div class="col-12">
                   <label for="email" class="form-label">Email</label>
-                  <input name="email" id="email" type="email" class="form-control" placeholder="이메일을 입력해주세요" />
-                  <div id="emailError" class="invalid-feedback">이메일을 다시 입력해주세요</div>
+                  <!-- input 태그의 required 속성으로 공백오류 처리 -->
+                  <input name="email" id="email" type="email" class="form-control" placeholder="이메일을 입력해주세요" required />
+                  <!-- <div id="emailError" class="invalid-feedback"></div> -->
                 </div>
                 <!-- 비밀번호 입력 -->
                 <div class="col-12">
                   <label for="address" class="form-label">Password</label>
+                  <!-- input 태그의 required 속성으로 공백오류 처리 -->
                   <input name="password" id="password" type="password" class="form-control" placeholder="비밀번호를 입력해주세요 (8자리 이상 16자리 이하)" required />
-                  <div id="passwordError" class="invalid-feedback">비밀번호를 다시 입력해주세요</div>
+                  <!-- <div id="passwordError" class="invalid-feedback"></div>-->
+                  <!-- 비밀번호 자리수 제한 함수 넣기 -->
                 </div>
               </div>
 
@@ -138,20 +140,19 @@
 
               <!-- 회원가입완료 버튼 -->
               <div>
-                <button id="signupButton" class="w-100 btn btn-primary btn-lg" type="submit">가입 완료하기</button>
-                <script src="js/signup.js"></script>
-                <script src="../public/js/signup.js"></script>
+                <!-- <script type="text/javascript" src="/js/signup.js"></script> -->
+                <button id="signupButton" class="w-100 btn btn-primary btn-lg" name="submit" type="submit">가입 완료하기</button>
               </div>
               <!-- 로그인 페이지로 이동 -->
               <a href="login"> <p class="text-center mt-4 mb-3 text-muted">회원가입 페이지로 이동</p></a>
-
-              <!-- 위아래 간격 조정 -->
-              <br />
-              <br />
             </form>
+            <!-- 위아래 간격 조정 -->
+            <br />
+            <br />
           </div>
         </div>
       </main>
+      <!-- </form> -->
     </div>
 
     <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -168,7 +169,6 @@
     ></script>
 
     <!-- signup.js 불러오기 -->
-    <script src="./js/signup.js"></script>
-    <script src="../public/js/signup.js"></script>
+    <!-- <script type="text/javascript" src="/js/signup.js"></script> -->
   </body>
 </html>

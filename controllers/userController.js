@@ -16,7 +16,7 @@ exports.signup = async (res, req) => {
     .then((result) => {
       console.log("회원가입 완료");
       // res.render("home");
-      res.send("<script>alert('회원가입이 완료되었습니다.');location.href='/home';</script>");
+      res.send("<script>alert('회원가입이 완료되었습니다. 로그인을 진행해주세요.');location.href='/login';</script>");
     })
     .catch((err) => {
       console.log(err);
