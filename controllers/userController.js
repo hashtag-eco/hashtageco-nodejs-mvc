@@ -37,10 +37,19 @@ exports.login = (req, res) => {
 //   res.render("profile");
 // };
 
-exports.profile = function (req, res) {
+exports.profile = async (req, res) => {
+  var memberId = req.session.idx;
+  const memberData = await Member.findAll({
+    attributes: ["name", "nickname", "email", "password"],
+    where: {
+      member_id: memberId,
+    },
+  });
+  console.log(memberData);
   console.log("session 객체 확인(profile) :", req.session);
+  // memberData = memberData[0].dataValues;
   if (req.session.login == true) {
-    res.render("profile");
+    res.render("profile", { memberData: memberData });
   } else {
     res.send("<script>alert('로그인을 먼저 해주세요.');location.href='/home';</script>");
   }
