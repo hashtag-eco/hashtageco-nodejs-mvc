@@ -1,5 +1,5 @@
 // 8주차 강의자료의 models/subscriber.js 참고
-
+require('sequelize');
 module.exports = (sequelize, Sequelize) => {
   const member = sequelize.define(
     "member",
