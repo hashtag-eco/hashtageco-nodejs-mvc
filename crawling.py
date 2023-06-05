@@ -23,11 +23,11 @@ client_secret = 'TpcXS6odwa'
 
 
 #검색하고 싶은 키워드 입력
-query = "제로웨이스트식품"
+query = "업사이클링디지털가전"
 query = urllib.parse.quote(query)
 
 #검색 결과 출력 건수 지정 최대 100
-display = "50"
+display = "30"
 
 start = "1"
 
@@ -76,7 +76,7 @@ cursor.execute("set names utf8")
 
 #데이터 저장하기
 for item in items:
-    cursor.execute(f"INSERT INTO ZeroWasteProduct(product_name, price, url_link, mall_name, brand, category1, category2, image_link) VALUES( \"{item[0]}\", \"{item[1]}\", \"{item[2]}\", \"{item[3]}\", \"{item[4]}\", \"{item[5]}\", \"{item[6]}\", \"{item[7]}\" )")
+    cursor.execute(f"INSERT INTO UpcyclingProduct(product_name, price, url_link, mall_name, brand, category1, category2, image_link) VALUES( \"{item[0]}\", \"{item[1]}\", \"{item[2]}\", \"{item[3]}\", \"{item[4]}\", \"{item[5]}\", \"{item[6]}\", \"{item[7]}\" )")
    
     
 #커밋하기

@@ -84,7 +84,7 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet" />
+    <!-- <link href="carousel.css" rel="stylesheet" /> -->
   </head>
   <body>
     <main>
@@ -93,14 +93,14 @@
         <br />
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1 mb-3" style="font-weight: bold">상품 이름</h2>
+            <h2 class="featurette-heading fw-normal lh-1 mb-3" style="font-weight: bold"><%= pdetails[0].dataValues.product_name %></h2>
+
             <hr class="featurette-divider" />
-            <p class="lead">상품 상세설명</p>
-            <p class="lead">상품 상세설명</p>
-            <p class="lead">상품 상세설명</p>
-            <p class="lead">상품 상세설명</p>
-            <p class="lead">상품 상세설명</p>
-            <p class="lead">상품 상세설명</p>
+            <p class="lead">가격  |  <%= pdetails[0].dataValues.price %>원</p>
+            <p class="lead">판매mall | <%= pdetails[0].dataValues.mall_name %></p>
+            <p class="lead">상위 카테고리 | <%= pdetails[0].dataValues.category1 %></p>
+            <p class="lead">하위 카테고리 | <%= pdetails[0].dataValues.category2 %></p>
+            <p class="lead"><a href="<%= pdetails[0].dataValues.url_link %>">판매링크로 이동하기</a></p>
           </div>
           <!-- margin-top으로 navbar와 상품이미지와의 간격 조정함 -->
           <div class="col-md-5" style="margin-top: 50px">
@@ -108,14 +108,15 @@
 
             <svg
               class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
-              width="500"
-              height="500"
+              width="0"
+              height="0"
               xmlns="http://www.w3.org/2000/svg"
               role="img"
               aria-label="Placeholder: 500x500"
               preserveAspectRatio="xMidYMid slice"
               focusable="false"
             >
+            <img src="<%=pdetails[0].dataValues.image_link%>"/>
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#eee" />
               <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
