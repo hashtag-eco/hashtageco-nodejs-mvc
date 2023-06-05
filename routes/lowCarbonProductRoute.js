@@ -1,6 +1,7 @@
 const router = require('express').Router(),
     productController = require('../controllers/productController');
 
-router.get("/:category/:productId", productController.goProductDetail);
+    console.log("상품라우팅파일");
+router.get("/:page", productController.getLowCarbonProduct);
 
 module.exports = router;
