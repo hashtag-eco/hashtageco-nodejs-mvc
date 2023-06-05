@@ -18,9 +18,11 @@ db.zproduct = require("./ZerowasteProduct.js")(sequelize, Sequelize);
 db.ucProduct = require("./UcProduct.js")(sequelize, Sequelize);
 db.lcProduct = require("./LProduct.js")(sequelize, Sequelize);
 db.member = require("./member.js")(sequelize, Sequelize);
+db.productScrap = require("./ProductScrap.js")(sequelize, Sequelize);
+db.store = require("./Store.js")(sequelize, Sequelize);
 
 //관계 정의
 //db.ProductScrap.belongsTo(db.member, {foreignKey : '})
-db.member.belongsToMany(db.lcProduct, {through: ''});
+//db.member.belongsToMany(db.lcProduct, {through: 'db.productScrap'});
 
 module.exports = db;

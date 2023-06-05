@@ -1,10 +1,6 @@
-const router = require("express").Router(),
-  homeController = require("../controllers/homeController"),
-  userController = require("../controllers/userController");
+const router = require('express').Router(),
+    userController = require('../controllers/userController');
 
-router.get("/", homeController.join);
-router.post("/", async (req, res, err) => {
-  userController.signup(res, req);
-});
+router.get("/", userController.signup);
 
 module.exports = router;
