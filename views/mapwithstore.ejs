@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>map</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+
+    <!-- 구글 폰트 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- main태그와 section태그 추가 -->
+    <main>
+      <section class="py-5 text-center container">
+        <div class="container" style="margin: 50px auto">
+          <div class="row">
+            <div class="col-lg-4" style="height: 800px">
+              <div class="section-title">
+                <h2>Contact</h2>
+                <p>
+                  Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                  suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
+                </p>
+              </div>
+
+              <div class="d-grid gap-2 d-md-block" style="text-align: center; margin-top: 50px">
+                <button onclick="location.href='/map/zerowaste'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">제로 웨이스트</button>
+                <button onclick="location.href='/map/lowcarbon'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">저탄소</button>
+                <button onclick="location.href='/map/upcycling'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">업사이클링</button>
+                </div>
+                <div class="list-group mx-0 w-auto" style="margin-top: 30px;">
+                    <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="">
+                    <span>
+                        서울시
+                    </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
+                    <span>
+                        경기도              
+                    </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
+                    <span>
+                        강원도                   
+                    </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios4" value="">
+                    <span>
+                        충청도              
+                    </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios5" value="">
+                    <span>
+                        경상도                   
+                    </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios6" value="">
+                    <span>
+                        전라도              
+                    </span>
+                    </label>
+                    <label class="list-group-item d-flex gap-2">
+                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios7" value="">
+                    <span>
+                        제주도                 
+                    </span>
+                    </label>
+                </div>
+
+                <div class="list-group list-group-flush border-bottom scrollarea">
+                    <div style="overflow-y: scroll; width: 100%; height: 300px; margin-top: 30px;">
+                        <% showlist.forEach(s => { %>
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                <strong class="mb-1"><%= s.dataValues.store_name %></strong>
+                                <small>Wed</small>
+                                </div>
+                                <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
+                                <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div>
+                            </a>
+                            <% }) %>
+                    
+                    
+                    
+                    </div>
+                </div>
+            
+
+            </div>
+
+           <!-- 지도 -->
+           <div class="col">
+            <div id="map" style="border: 0; width: 100%; height: 100%"></div>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c55f3d0a9881207c994227a57debd91&libraries=services"></script>
+            <script>
+              var mapContainer = document.getElementById("map");
+                 mapOption = {
+                    center: new kakao.maps.LatLng(37.5912999, 127.0221068),
+                    level: 3,
+              };
+
+              // 지도를 생성합니다
+              var map = new kakao.maps.Map(mapContainer, mapOption);
+
+              // 주소-좌표 변환 객체를 생성합니다
+              var geocoder = new kakao.maps.services.Geocoder();
+
+            
+
+              //position에 db에서 가져오는 데이터 넣기
+              var positions = [
+              {
+                title: '카카오',
+                address: '제주특별자치도 제주시 첨단로 242'
+              },
+              {
+                title: '생태연못',
+                address: '경기 남양주시 조안면 능내리 50'
+              },
+              {
+                title: '근린공원',
+                address: '경기 남양주시 별내면 청학로68번길 40'
+              }
+              ];
+
+              positions.forEach(function (position) { 
+                // 주소로 좌표를 검색합니다
+                geocoder.addressSearch(position.address, function(result, status) {
+
+                  // 정상적으로 검색이 완료됐으면
+                  if (status === kakao.maps.services.Status.OK) {
+
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                    // 결과값으로 받은 위치를 마커로 표시합니다
+                    var marker = new kakao.maps.Marker({
+                      map: map,
+                      position: coords
+                    });
+
+                    marker.setMap(map); //추가한 코드
+
+                    // LatLngBounds 객체에 좌표를 추가합니다
+                    bounds.extend(coords); //추가한 코드, 현재 코드에서 좌표정보는 point[i]가 아닌 coords이다.
+
+                    // 인포윈도우로 장소에 대한 설명을 표시합니다
+                    var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:150px;text-align:center;padding:6px 0;">' + position.title + '</div>'
+                    });
+                    infowindow.open(map, marker);
+
+                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                    //map.setCenter(coords);
+                  }
+                });
+              }); 
+            </script>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
