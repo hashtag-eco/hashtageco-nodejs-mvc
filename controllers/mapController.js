@@ -59,7 +59,7 @@ exports.getStore = async (req, res) => {
   }catch(err) {
     return err;
   }
-  console.log(showlist);
+  // console.log(showlist);
   res.render("mapwithstore", {showlist: showlist});
 }
   // try {
