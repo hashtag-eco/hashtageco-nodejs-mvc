@@ -3,6 +3,6 @@ exports.home = (req, res) => {
 };
 
 // 회원 가입 view
-exports.join = (req, res) => {
+exports.signup = (req, res) => {
   res.render("signup");
 };

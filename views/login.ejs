@@ -115,35 +115,37 @@
       }
     </style>
   </head>
-  <body class="text-center">
-    <main class="form-signin w-100 m-auto">
-      <form class="login-form" action="/login" method="post">
-        <!-- h2태그 내부에 적힌 거 변경해도 됨 -->
-        <h2 class="mb-3" style="font-weight: bold">Login</h2>
-        <!-- p태그 내부에 적힌 거 변경해도 됨 -->
-        <p class="lead">로그인</p>
+  <body class="text-center bg-light">
+    <div class="container">
+      <main class="form-signin w-100 m-auto">
+        <form>
+          <!-- h2태그 내부에 적힌 거 변경해도 됨 -->
+          <h2 class="mb-3" style="font-weight: bold">Login</h2>
+          <!-- p태그 내부에 적힌 거 변경해도 됨 -->
+          <p class="lead">로그인</p>
 
-        <!-- 이메일 입력란 -->
-        <div class="form-floating">
-          <input name="email" id="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
-          <label for="floatingInput">이메일을 입력하세요</label>
-        </div>
-        <!-- 비밀번호 입력란 -->
-        <div class="form-floating">
-          <input name="password" id="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-          <label for="floatingPassword">비밀번호를 입력하세요</label>
-        </div>
+          <!-- 이메일 입력란 -->
+          <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <!-- 비밀번호 입력란 -->
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
+            <label for="floatingPassword">Password</label>
+          </div>
 
-        <!-- 위아래 간격 조정 -->
-        <br />
+          <!-- 위아래 간격 조정 -->
+          <br />
 
-        <!-- 로그인 버튼 -->
-        <button id="loginButton" class="w-100 btn btn-lg btn-primary" type="submit">로그인하기</button>
+          <!-- 로그인 버튼 -->
+          <button class="w-100 btn btn-lg btn-primary" type="submit">로그인하기</button>
 
-        <!-- 회원가입 페이지로 이동 -->
-        <a href="signup"> <p class="mt-4 mb-3 text-muted">회원가입 페이지로 이동</p></a>
-      </form>
-    </main>
+          <!-- 회원가입 페이지로 이동하게 변경해야 함 -->
+          <p class="mt-4 mb-3 text-muted">회원가입 페이지로 이동</p>
+        </form>
+      </main>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

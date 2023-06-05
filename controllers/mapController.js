@@ -21,7 +21,7 @@ exports.map = (req, res) => {
 //스토어 목록 가져오는 함수
 exports.getStore = async (req, res) => {
   console.log("controller함수 안");
-  let category = req.parmas.category;
+  let category = req.params.category;
   // let storelist = await Map.findAll({
   //   attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count', 'is_upcycling', 'is_zero_waste', 'is_low_carbon']
   // })
@@ -32,17 +32,35 @@ exports.getStore = async (req, res) => {
         showlist = await Map.findAll({
           attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count'],
           where: {
-          is_zero_waste: 1
+            is_zero_waste: 1
           }
         })
         break;
       }
-      
+      case 'upcycling' : {
+        showlist = await Map.findAll({
+          attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count'],
+          where: {
+            is_upcycling: 1
+          }
+        })
+        break;
+      }
+      case 'lowcarbon' : {
+        showlist = await Map.findAll({
+          attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count'],
+          where: {
+            is_low_carbon: 1
+          }
+        })
+        break;
+      }
     }
   }catch(err) {
     return err;
   }
-  res("map", {showlist: showlist});
+  console.log(showlist);
+  res.render("mapwithstore", {showlist: showlist});
 }
   // try {
   //   const zwlist = await Product.findAll({

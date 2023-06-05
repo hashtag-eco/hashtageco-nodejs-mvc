@@ -1,16 +1,14 @@
 // 8주차 강의자료의 models/subscriber.js 참고
-require('sequelize');
+
 module.exports = (sequelize, Sequelize) => {
   const member = sequelize.define(
     "member",
     {
-      member_id: {
+      memebr_id: {
         //기본키
         type: Sequelize.INTEGER,
-        autoIncrement: true, // 추가
         allowNull: false,
         primaryKey: true,
-        unique: true,
       },
       name: {
         type: Sequelize.STRING(10),

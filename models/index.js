@@ -14,8 +14,15 @@ let sequelize = new Sequelize(config.database, config.username, config.password,
 db.sequelize = sequelize; //인스턴스
 db.Sequelize = Sequelize; //라이브러리
 
-db.product = require("./Product.js")(sequelize, Sequelize);
+db.zproduct = require("./ZerowasteProduct.js")(sequelize, Sequelize);
+db.ucProduct = require("./UcProduct.js")(sequelize, Sequelize);
+db.lcProduct = require("./LProduct.js")(sequelize, Sequelize);
 db.member = require("./member.js")(sequelize, Sequelize);
-db.store = require("./map.js")(sequelize.Sequelize);
+db.productScrap = require("./ProductScrap.js")(sequelize, Sequelize);
+db.store = require("./Store.js")(sequelize, Sequelize);
+
+//관계 정의
+//db.ProductScrap.belongsTo(db.member, {foreignKey : '})
+//db.member.belongsToMany(db.lcProduct, {through: 'db.productScrap'});
 
 module.exports = db;

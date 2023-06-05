@@ -88,61 +88,52 @@
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Album example</h1>
-            <p class="lead text-muted">
-              Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.
-            </p>
+            <h1 class="fw-light">ZeroWaste Product</h1>
+            <p class="lead text-muted">제로웨이스트 제품 둘러보기</p>
             <p>
               <!-- 해시태그 버튼 -->
               <!-- 버튼 라우트 설정 아직 안됨 -->
-              <a href="/product/zeroWaste" class="btn btn-primary my-2" selected="false">제로웨이스트</a>
-              <a href="/product/upcycling" class="btn btn-primary my-2">업사이클링</a>
-              <a href="/product/lowCarbon" class="btn btn-primary my-2">저탄소</a>
-             
+              <a href="/zeroWasteProduct/1" class="btn btn-primary my-2">제로웨이스트</a>
+              <a href="/upcyclingProduct/1" class="btn btn-primary my-2">업사이클링</a>
+              <a href="/lowCarbonProduct/1" class="btn btn-primary my-2">저탄소</a>
             </p>
           </div>
         </div>
       </section>
-
-
-      <!-- <% list.forEach(s => { %> -->
-        <!-- 상품 나열 전체 -->
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <% list.forEach(s => { %>
+            <!-- 상품 나열 전체 -->
 
             <!-- 상품 나열 개별 -->
             <!-- 일단 페이지에 상품 15개 띄우는 거로 했지만 상품 1~nnn 까지 반복문 써서 띄워야 할 듯 -->
             <!-- 상품 1 -->
-            <% list.forEach(s => { %>
-
             <div class="col">
-                
               <div class="card shadow-sm">
                 <svg
                   class="bd-placeholder-img card-img-top"
                   width="100%"
-                  height="225"
+                  height="0"
                   xmlns="http://www.w3.org/2000/svg"
                   role="img"
                   aria-label="Placeholder: Thumbnail"
                   preserveAspectRatio="xMidYMid slice"
                   focusable="false"
                 >
+                  <img src="<%=s.dataValues.image_link%>" />
                   <title>Placeholder</title>
                   <rect width="100%" height="100%" fill="#55595c" />
                 </svg>
-
+                <!-- <img src="<%=s.dataValues.image_link%>"/> -->
                 <div class="card-body">
-                  <p class="card-text" style="font-weight: bold">
-                    <%= s.dataValues.product_name %>
-                  </p>
-                  <p class="card-text">넣을 내용있으면 넣으셈</p>
+                  <p class="card-text" style="font-weight: bold"><%= s.dataValues.product_name %></p>
+                  <p class="card-text"><%= s.dataValues.price %>원</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <!-- 버튼 라우트 설정 아직 안됨 -->
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
+                      <a href="/productdetail/zerowaste/<%= parseInt(s.dataValues.product_id) %>" class="btn btn-sm btn-outline-secondary">Detail</a>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" selected="true">Scrap</button>
                     </div>
                     <!-- 스크랩수 정렬 구현 못하면 지우기 -->
                     <small class="text-muted">스크랩수 넣기</small>
@@ -151,14 +142,35 @@
               </div>
             </div>
 
-    <% }) %>
-      
-            
-            
-    
-           
+            <% }) %>
           </div>
         </div>
+      </div>
+      <div class="py-5 text-center container">
+        <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/1">1</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/2">2</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/3">3</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/4">4</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/5">5</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/6">6</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/7">7</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/8">8</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/9">9</a></li>
+            <li class="page-item"><a class="page-link" href="/zeroWasteProduct/10">10</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </main>
 

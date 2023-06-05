@@ -1,5 +1,4 @@
 //define()을 통해 엔티티 정의
-require('sequelize');
 module.exports = (sequelize, Sequelize) => {
   console.log("product model 안1");
   const product = sequelize.define(
@@ -31,6 +30,7 @@ module.exports = (sequelize, Sequelize) => {
       scrapCount: {
         //상품스크랩수
         type: Sequelize.STRING,
+        allowNull: true,
       },
       category1: {
         //상품 카테고리1
@@ -53,6 +53,7 @@ module.exports = (sequelize, Sequelize) => {
       brand: {
         //상품 브랜드
         type: Sequelize.STRING,
+        allowNull: true
       },
       imageLink: {
         //상품 이미지 링크
