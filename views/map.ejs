@@ -27,14 +27,12 @@
         <div class="container" style="margin: 50px auto">
           <div class="row">
             <div class="col-lg-4" style="height: 800px">
-              <div class="section-title" style="margin-top: 50px;">
-                <h2 style="margin: 15px auto;">스토어 이름</h2>
-                <h5 style="margin: 15px auto;">주소</h5>
-                <h5 style="margin: 15px auto;">웹 주소</h5>
-                <!-- <p>
+              <div class="section-title">
+                <h2>Contact</h2>
+                <p>
                   Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
                   suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
-                </p> -->
+                </p>
               </div>
 
               <div class="d-grid gap-2 d-md-block" style="text-align: center; margin-top: 50px">
@@ -42,111 +40,20 @@
                 <button onclick="location.href='/map/lowcarbon'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">저탄소</button>
                 <button onclick="location.href='/map/upcycling'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">업사이클링</button>
               </div>
-
-              
-
-              <div class="list-group mx-0 w-auto" style="margin-top: 40px;">
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="">
-                  <span>
-                    서울시
-                  </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
-                  <span>
-                    경기도              
-                  </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                  <span>
-                    강원도                   
-                  </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios4" value="">
-                  <span>
-                    충청도              
-                  </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios5" value="">
-                  <span>
-                    경상도                   
-                  </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios6" value="">
-                  <span>
-                    전라도              
-                  </span>
-                </label>
-                <label class="list-group-item d-flex gap-2">
-                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios7" value="">
-                  <span>
-                    제주도                 
-                  </span>
-                </label>
-
-                <p><%= showlist[0].dataValues.store_name %> </p>
-              </div>
-              
             </div>
 
             <!-- 지도 -->
             <div class="col">
               <div id="map" style="border: 0; width: 100%; height: 100%"></div>
-              <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c55f3d0a9881207c994227a57debd91&libraries=services"></script>
+              <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c55f3d0a9881207c994227a57debd91"></script>
               <script>
-                var mapContainer = document.getElementById("map");
-                   mapOption = {
-                      center: new kakao.maps.LatLng(37.5912999, 127.0221068),
-                      level: 3,
+                var container = document.getElementById("map");
+                var options = {
+                  center: new kakao.maps.LatLng(33.450701, 126.570667),
+                  level: 3,
                 };
 
-                // 지도를 생성합니다
-                var map = new kakao.maps.Map(mapContainer, mapOption);
-
-                // 주소-좌표 변환 객체를 생성합니다
-                var geocoder = new kakao.maps.services.Geocoder();
-
-                //position에 db에서 가져오는 데이터 넣기
-                var positions = [
-                {
-                  title: '카카오',
-                  address: '제주특별자치도 제주시 첨단로 242'
-                },
-                {
-                  title: '생태연못',
-                  address: '경기 남양주시 조안면 능내리 50'
-                },
-                {
-                  title: '근린공원',
-                  address: '경기 남양주시 별내면 청학로68번길 40'
-                }
-                ];
-
-                positions.forEach(function (position) { 
-                  // 주소로 좌표를 검색합니다
-                  geocoder.addressSearch(position.address, function(result, status) {
-
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === kakao.maps.services.Status.OK) {
-
-                      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-                      // 결과값으로 받은 위치를 마커로 표시합니다
-                      var marker = new kakao.maps.Marker({
-                        map: map,
-                        position: coords
-                      });
-
-                      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                      // map.setCenter(coords);
-                    }
-                  });
-                }); 
+                var map = new kakao.maps.Map(container, options);
               </script>
             </div>
           </div>

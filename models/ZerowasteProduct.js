@@ -1,5 +1,4 @@
 //define()을 통해 엔티티 정의
-require('sequelize');
 module.exports = (sequelize, Sequelize) => {
   console.log("product model 안1");
   const product = sequelize.define(
