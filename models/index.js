@@ -16,5 +16,6 @@ db.Sequelize = Sequelize; //라이브러리
 
 db.product = require("./Product.js")(sequelize, Sequelize);
 db.member = require("./member.js")(sequelize, Sequelize);
+db.store = require("./map.js")(sequelize.Sequelize);
 
 module.exports = db;
