@@ -19,7 +19,8 @@ const express = require("express"),
   mapscrap = require('./routes/mapScrapRoute'),
   signup = require('./routes/signupRoute'),
   profile = require('./routes/profileRoute'),
-  login = require('./routes/loginRoute');
+  login = require('./routes/loginRoute'),
+  store = require('./routes/storeRoute');
   
 app.set("view engine", "ejs");
 app.use(express.static(`${__dirname}/public`));
@@ -52,6 +53,7 @@ app.use("/mapscrap", mapscrap);
 app.use("/login", login);
 app.use("/profile", profile);
 app.use("/signup", signup);
+app.use("/store", store);
 
 //에러 처리 위한 미들웨어 사용
 app.use(errorController.logErrors);
