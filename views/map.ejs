@@ -95,7 +95,7 @@
                   </span>
                 </label>
 
-                <p><%= showlist[0].dataValues.store_name %> </p>
+                <!-- <p><%= showlist[0].dataValues.store_name %> </p> -->
               </div>
               
             </div>
@@ -118,6 +118,7 @@
                 var geocoder = new kakao.maps.services.Geocoder();
 
                 //position에 db에서 가져오는 데이터 넣기
+                //position에 db 연결 push
                 var positions = [
                 {
                   title: '카카오',
