@@ -1,46 +1,28 @@
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
+const fs = require("fs");
+const path = require("path");
+const Sequelize = require("sequelize");
+const process = require("process");
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const env = process.env.NODE_ENV || "development";
+const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
-let sequelize;
+let sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+db.sequelize = sequelize; //인스턴스
+db.Sequelize = Sequelize; //라이브러리
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (
-      file.indexOf('.') !== 0 &&
-      file !== basename &&
-      file.slice(-3) === '.js' &&
-      file.indexOf('.test.js') === -1
-    );
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+db.zproduct = require("./ZerowasteProduct.js")(sequelize, Sequelize);
+db.ucProduct = require("./UcProduct.js")(sequelize, Sequelize);
+db.lcProduct = require("./LProduct.js")(sequelize, Sequelize);
+db.member = require("./member.js")(sequelize, Sequelize);
+db.productScrap = require("./ProductScrap.js")(sequelize, Sequelize);
+db.store = require("./Store.js")(sequelize, Sequelize);
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
-
-db.member = require("./")
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+//관계 정의
+//db.ProductScrap.belongsTo(db.member, {foreignKey : '})
+//db.member.belongsToMany(db.lcProduct, {through: 'db.productScrap'});
 
 module.exports = db;
