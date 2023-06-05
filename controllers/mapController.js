@@ -21,36 +21,71 @@ exports.map = (req, res) => {
 //스토어 목록 가져오는 함수
 exports.getStore = async (req, res) => {
   console.log("controller함수 안");
+  let category = req.parmas.category;
+  // let storelist = await Map.findAll({
+  //   attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count', 'is_upcycling', 'is_zero_waste', 'is_low_carbon']
+  // })
+    let showlist;
   try {
-    if (findUpcycling) {
-      const store = await store.findAll({
-        where: {
-          is_upcycling: 1,
-          attributes : ['store_id', 'store_name', 'address', 'region_name']
-        }
-        //where : {}
-      })
-    } else if (findZeroWaste) {
-      const store = await store.findAll({
-        where: {
-          is_zero_waste: 1,
-          attributes : ['store_id', 'store_name', 'address', 'region_name']
-        }
-      })
-    } else if (findLowCarbon) {
-      const store = await store.findAll({
-        where: {
-          is_low_carbon: 1,
-          attributes : ['store_id', 'store_name', 'address', 'region_name']
-        }
-    })
-  }
-    console.log(store);
-    console.log("데이터받아옴");
-    res.render("productByCategory/map", {list : store});
-  }catch (err) {
+    switch (category) {
+      case 'zerowaste' : {
+        showlist = await Map.findAll({
+          attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count'],
+          where: {
+          is_zero_waste: 1
+          }
+        })
+        break;
+      }
+      
+    }
+  }catch(err) {
     return err;
-  };
+  }
+  res("map", {showlist: showlist});
+}
+  // try {
+  //   const zwlist = await Product.findAll({
+  //     attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
+  //     //where : {}
+  //   })
+  //   console.log(zwlist);
+  //   console.log("데이터받아옴");
+  //   res.render("productByCategory/zerowasteProduct", {list : zwlist});
+  // }catch (err) {
+  //   return err;
+  // };
+  // try {
+
+  //   if (findUpcycling) {
+  //     const store = await store.findAll({
+  //       where: {
+  //         is_upcycling: 1,
+  //         attributes : ['store_id', 'store_name', 'address', 'region_name']
+  //       }
+  //       //where : {}
+  //     })
+  //   } else if (findZeroWaste) {
+  //     const store = await store.findAll({
+  //       where: {
+  //         is_zero_waste: 1,
+  //         attributes : ['store_id', 'store_name', 'address', 'region_name']
+  //       }
+  //     })
+  //   } else if (findLowCarbon) {
+  //     const store = await store.findAll({
+  //       where: {
+  //         is_low_carbon: 1,
+  //         attributes : ['store_id', 'store_name', 'address', 'region_name']
+  //       }
+  //   })
+  // }
+  //   console.log(store);
+  //   console.log("데이터받아옴");
+  //   res.render("map", {list : store});
+  // }catch (err) {
+  //   return err;
+  // };
 };
 
 // exports.upcyclingStore = (req, res) => {
