@@ -4,11 +4,13 @@ module.exports = (sequelize, Sequelize) => {
   const member = sequelize.define(
     "member",
     {
-      memebr_id: {
+      member_id: {
         //기본키
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
+        autoIncrement: true,
+        unique: true,
       },
       name: {
         type: Sequelize.STRING(10),
