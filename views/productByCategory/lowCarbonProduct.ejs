@@ -88,14 +88,17 @@
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">LowCarbon Product</h1>
+            <h1>LowCarbon Product</h1>
             <p class="lead text-muted">저탄소 제품 둘러보기</p>
             <p>
               <!-- 해시태그 버튼 -->
-              <!-- 버튼 라우트 설정 아직 안됨 -->
-              <a href="/zeroWasteProduct/1" class="btn btn-primary my-2">제로웨이스트</a>
+              <!-- 버튼 라우트 설정됨 -->
+              <button type="button" style="background-color: rgb(49, 110, 49); color: white" class="btn my-2" id="homeButton" onclick="location.href='/zeroWasteProduct/1'">제로웨이스트</button>
+              <button type="button" style="background-color: rgb(49, 110, 49); color: white" class="btn my-2" id="homeButton" onclick="location.href='/upcyclingProduct/1'">업사이클링</button>
+              <button type="button" style="background-color: rgb(49, 110, 49); color: white" class="btn my-2" id="homeButton" onclick="location.href='/lowCarbonProduct/1'">저탄소</button>
+              <!-- <a href="/zeroWasteProduct/1" class="btn btn-primary my-2">제로웨이스트</a>
               <a href="/upcyclingProduct/1" class="btn btn-primary my-2">업사이클링</a>
-              <a href="/lowCarbonProduct/1" class="btn btn-primary my-2">저탄소</a>
+              <a href="/lowCarbonProduct/1" class="btn btn-primary my-2">저탄소</a> -->
             </p>
           </div>
         </div>
@@ -131,12 +134,15 @@
                   <p class="card-text"><%= s.dataValues.price %>원</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <!-- 버튼 라우트 설정 아직 안됨 -->
-                      <a href="/productdetail/lowcarbon/<%= parseInt(s.dataValues.product_id) %>" class="btn btn-sm btn-outline-secondary">Detail</a>
+                      <!-- 버튼 라우트 설정됨 -->
+                      <button type="button" class="btn btn-sm btn-outline-secondary" selected="true" onclick="location.href='/productdetail/lowcarbon/<%= parseInt(s.dataValues.product_id) %>'">
+                        Detail
+                      </button>
+                      <!-- <a href="/productdetail/lowcarbon/<%= parseInt(s.dataValues.product_id) %>" class="btn btn-sm btn-outline-secondary">Detail</a> -->
                       <button type="button" class="btn btn-sm btn-outline-secondary" selected="true">Scrap</button>
                     </div>
                     <!-- 스크랩수 정렬 구현 못하면 지우기 -->
-                    <small class="text-muted">스크랩수 넣기</small>
+                    <small class="text-muted">스크랩수</small>
                   </div>
                 </div>
               </div>
