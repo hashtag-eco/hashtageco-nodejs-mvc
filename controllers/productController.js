@@ -15,7 +15,7 @@ exports.product = (req, res) => {
 
 //제로웨이스트 상품 목록 불러오기
 exports.getZeroWasteProduct = async (req, res) => {
-  console.log("session 객체 확인(product) :", req.session);
+  console.log("session 객체 확인(login) :", req.session);
   console.log("controller함수 안");
   let pageNum = req.params.page; // 요청 페이지 넘버
   let offset = 0;
@@ -134,34 +134,21 @@ exports.goProductDetail = async (req, res) => {
 
 //제로웨이스트 상품스크랩 등록하기 
 exports.updateScrap = async(req, res) => {
-  //async function postScrap()
   const uid = req.session.idx;
-  db.Zwproductscrap.create({
-    member_id: uid,
-    product_id: parseInt(req.body.scrapItemId)
-  })
-  var responseData = {};
-  res.json(responseData);
 
+  
 
 }
-
-// exports.async function postScrap(user) {
-
-// }
 
 //회원의 상품 스크랩 보여주기
 exports.showProductScrap = async (req, res) => {
   const uid = req.session.idx;
-  const scrapList = await ZProduct.findAll({
-    attributes: ['product_id', 'product_name', 'price, image_link', 'mall_name', 'category1', 'category2'],
-    where: { member_id : uid },
+  const scrapList = await ZProduct.findAll(uid, {
+    attributes: [product_id, product_name, price, image_link, mall_name, category1, category2],
     include: {
       model: Member
-    } 
+    }
   }) 
-  console.log(scrapList);
-  res.render("productscrap", {scrapList: scrapList});
 }
 
 
