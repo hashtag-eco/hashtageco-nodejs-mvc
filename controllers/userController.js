@@ -39,6 +39,9 @@ exports.login = (req, res) => {
 
 exports.profile = async (req, res) => {
   var memberId = req.session.idx;
+  // var oldPassword = req.body.password;
+  // var newPassword = req.body.newpassword;
+  // console(oldPassword, newPassword);
   const memberData = await Member.findAll({
     attributes: ["name", "nickname", "email", "password"],
     where: {
