@@ -22,7 +22,7 @@ db.productScrap = require("./ProductScrap.js")(sequelize, Sequelize);
 db.store = require("./Store.js")(sequelize, Sequelize);
 
 //관계 정의
-//db.zproduct.belongsToMany(db.member, {through: 'ZProductScrap', foreignKey: 'product_id'} )
-//db.member.belongsToMany(db.zproduct, {through: 'ZProductScrap', foreignKey: 'member_id'});
+db.zproduct.belongsToMany(db.member, {through: 'ZProductScrap', foreignKey: 'product_id'} )
+db.member.belongsToMany(db.zproduct, {through: 'ZProductScrap', foreignKey: 'member_id'}); //member와 product는 다대다 관계이다.
 
 module.exports = db;
