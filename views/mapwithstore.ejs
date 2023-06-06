@@ -156,6 +156,8 @@
                     // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
                     kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
                     kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                    // 마커 클릭이벤트
+                    kakao.maps.event.addListener(marker, 'click', setmapview(map, coords));
                   }
                   
                 });
@@ -172,6 +174,14 @@
                   return function() {
                       infowindow.close();
                   };
+              }
+
+              // 마커 클릭시 마커를 중심 위치로 설정, 지도 확대
+              function setmapview(map, coords) {
+                return function() {
+                  map.setCenter(coords);
+                  map.setLevel(1);
+                }
               }
 
               map.setCenter(37.5912999, 127.0221068); 
