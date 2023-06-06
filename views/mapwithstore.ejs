@@ -122,20 +122,7 @@
               var geocoder = new kakao.maps.services.Geocoder();
 
               //position에 db에서 가져오는 데이터 넣기
-              var positions = [
-              {
-                title: '카카오',
-                address: '제주특별자치도 제주시 첨단로 242'
-              },
-              {
-                title: '생태연못',
-                address: '경기 남양주시 조안면 능내리 50'
-              },
-              {
-                title: '근린공원',
-                address: '경기 남양주시 별내면 청학로68번길 40'
-              }
-              ];
+              var positions = <%- JSON.stringify(positionss) %>;
 
               // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
               var bounds = new kakao.maps.LatLngBounds(); //추가한 코드

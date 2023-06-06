@@ -22,7 +22,7 @@ db.productScrap = require("./ProductScrap.js")(sequelize, Sequelize);
 db.store = require("./Store.js")(sequelize, Sequelize);
 
 //관계 정의
-//db.ProductScrap.belongsTo(db.member, {foreignKey : '})
-//db.member.belongsToMany(db.lcProduct, {through: 'db.productScrap'});
+db.zproduct.belongsToMany(db.member, {through: 'ZProductScrap', foreignKey: 'product_id'} )
+db.member.belongsToMany(db.zproduct, {through: 'ZProductScrap', foreignKey: 'member_id'});
 
 module.exports = db;
