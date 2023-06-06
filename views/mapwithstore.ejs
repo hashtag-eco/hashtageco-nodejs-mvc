@@ -92,10 +92,13 @@
                   <% showlist.forEach(s => { %>
                     <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong class="mb-1"><%= s.dataValues.store_name %></strong>
+                        <strong class="mb-1" style="cursor: pointer;" onclick="window.open('<%= s.dataValues.web_link %>')"><%= s.dataValues.store_name %></strong>
                       </div>
                       <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
-                      <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div>
+                      <!-- <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div> -->
+                      <button type="button" class="btn btn-sm btn-outline-secondary" selected="true">위치 지도에서 보기</button>
+                      <!-- <a href="<%= s.dataValues.web_link %>"><%= s.dataValues.web_link %></a> -->
+                      
                     </a>  
                   <% }) %>    
                 </div>  
