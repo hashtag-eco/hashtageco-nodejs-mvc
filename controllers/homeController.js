@@ -28,7 +28,12 @@ exports.home = async (req, res) => {
 
 // 회원 가입 view 랜더링
 exports.join = (req, res) => {
-  res.render("signup");
+  if (req.session.login == true) {
+    console.log("session 객체 확인(signup) :", req.session);
+    res.send("<script>alert('이미 회원입니다. 새로운 회원을 등록하고 싶다면 로그아웃을 먼저 진행해주세요.');location.href='/home';</script>");
+  } else {
+    res.render("signup");
+  }
 };
 
 // 로그인 view 랜더링
