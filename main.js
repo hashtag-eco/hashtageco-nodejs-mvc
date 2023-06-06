@@ -22,8 +22,7 @@ const express = require("express"),
   signup = require('./routes/signupRoute'),
   profile = require('./routes/profileRoute'),
   login = require('./routes/loginRoute'),
-  store = require('./routes/storeRoute');
-  
+  store = require('./routes/storeRoute'),
   logout = require("./routes/logoutRoute"); // 로그아웃 라우터 추가
 app.set("view engine", "ejs");
 

@@ -29,7 +29,7 @@
           <div class="row">
             <div class="col-lg-4" style="height: 800px; margin-top: 30px;">
               <div class="section-title">
-                <h2>스토어 이름</h2>
+                <h2> 스토어 이름 </h2>
                 <p> 주소 </p>
                 <p> 웹 주소 </p>
               </div>
@@ -89,16 +89,17 @@
               <!-- 키워드 별 스토어 목록 -->
               <div class="list-group list-group-flush border-bottom scrollarea">
                 <div style="overflow-y: scroll; width: 100%; height: 400px; margin-top: 30px;">
-
                   <% showlist.forEach(s => { %>
                     <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
                       <div class="d-flex w-100 align-items-center justify-content-between">
-                        <strong class="mb-1"><%= s.dataValues.store_name %></strong>
+                        <strong class="mb-1" style="cursor: pointer;" onclick="window.open('<%= s.dataValues.web_link %>')"><%= s.dataValues.store_name %></strong>
                       </div>
                       <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
+                      
                       <!-- <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div> -->
-                      <a href="<%= s.dataValues.web_link %>"><%= s.dataValues.web_link %></a>
-                      <button type="button" class="btn btn-sm btn-outline-secondary" selected="true">위치 지도에서 보기</button>
+                      <button onClick="idx = <% JSON.stringify(s.dataValues.address) %>; showSpecificLocation(idx)" type="button" class="btn btn-sm btn-outline-secondary" selected="true">위치 지도에서 보기</button>
+                      <!-- <a href="<%= s.dataValues.web_link %>"><%= s.dataValues.web_link %></a> -->
+                      
                     </a>  
                   <% }) %>    
                 </div>  
@@ -112,12 +113,16 @@
             <div id="map" style="border: 0; width: 100%; height: 100%"></div>
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c55f3d0a9881207c994227a57debd91&libraries=services"></script>
             <script>
+              var idx = 0;
+
+              //let addresses = [];
+              //let sizal;
               var mapContainer = document.getElementById("map");
                  mapOption = {
                     center: new kakao.maps.LatLng(37.5912999, 127.0221068),
                     level: 3,
               };
-
+              
               // 지도를 생성합니다
               var map = new kakao.maps.Map(mapContainer, mapOption);
 
@@ -126,9 +131,13 @@
 
               //position에 db에서 가져오는 데이터 넣기
               var positions = <%- JSON.stringify(positionss) %>;
+              var addr = <%- JSON.stringify(addresses) %>;
 
               // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
               var bounds = new kakao.maps.LatLngBounds(); //추가한 코드
+
+             
+            
 
               positions.forEach(function (position) {
                 // 주소로 좌표를 검색합니다
@@ -185,6 +194,34 @@
                   map.setCenter(coords);
                   map.setLevel(1);
                 }
+              }
+
+              
+              async function showSpecificLocation(storeAdd) {
+            
+                //console.log("showSpecific");
+                //console.log(storeAdd);
+                //alert(typeof storeAdd);
+
+                await geocoder.addressSearch(addr[storeAdd], function(result, status) {
+
+                  // 정상적으로 검색이 완료됐으면
+                  if (status === kakao.maps.services.Status.OK) {
+                      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                  }
+
+                  map.setCenter(coords);
+                })
+
+              }
+              //스크랩을 등록하는 함수로, fetch api를 통해 main.js에 정의된 url들과 소통한다.
+              function addScrap(scrapItemId) {
+                fetch("http://localhost:3000/zeroWasteProduct/:page" + scrapItemId, {
+                  method: "POST"
+                })
+                .then(response => response.json())
+                .then(json => console.log(json))
+                location.reload();
               }
 
               map.setCenter(37.5912999, 127.0221068); 
