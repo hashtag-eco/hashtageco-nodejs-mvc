@@ -29,14 +29,6 @@ exports.signup = async (res, req) => {
   }
 };
 
-exports.login = (req, res) => {
-  res.render("login");
-};
-
-// exports.profile = (req, res) => {
-//   res.render("profile");
-// };
-
 exports.profile = async (req, res) => {
   var memberId = req.session.idx;
   // var oldPassword = req.body.password;
@@ -54,6 +46,6 @@ exports.profile = async (req, res) => {
   if (req.session.login == true) {
     res.render("profile", { memberData: memberData });
   } else {
-    res.send("<script>alert('로그인을 먼저 해주세요.');location.href='/home';</script>");
+    res.send("<script>alert('로그인을 먼저 해주세요.');location.href='/login';</script>");
   }
 };
