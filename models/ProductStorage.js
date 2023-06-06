@@ -11,6 +11,16 @@
 //                 }
 //             });
 
+        case "lowCarbon":
+          const query2 = "SELECT * FROM LowCarbonProduct;";
+          pool.query(query2, function (err, data) {
+            if (err) {
+              console.error("query 실행하지 못함");
+              reject(`${err}`);
+            } else {
+              resolve(data);
+            }
+          });
 
 //             switch(category) {
 //                 case 'zeroWaste' :
