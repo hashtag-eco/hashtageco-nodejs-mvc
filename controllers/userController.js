@@ -2,6 +2,7 @@ const db = require("../models/index"),
   Member = db.member;
 Op = db.Sequelize.Op;
 
+
 exports.signup = async (res, req) => {
   // 회원 가입
   if (req.body.password.length < 8 || req.body.password.length > 16) {
