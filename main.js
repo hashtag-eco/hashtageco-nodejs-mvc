@@ -58,7 +58,7 @@ app.use("/product", product);
 app.use("/upcyclingProduct", upcyclingProduct);
 app.use("/zeroWasteProduct", zeroWasteProduct);
 app.use("/lowCarbonProduct", lowCarbonProduct);
-app.use("/productdetail", productdetail);
+app.use("/productdetail", productdetail); //상품상세
 app.use("/productscrap", productscrap);
 app.use("/mapscrap", mapscrap);
 app.use("/login", login);
