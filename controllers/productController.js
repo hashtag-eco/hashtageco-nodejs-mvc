@@ -153,7 +153,7 @@ const getScrapList = async (uid) => {
   try {
     //세션의 멤버id
     const ZscrapList = await ZProduct.findAll({
-      attributes: ["product_id", "product_name", "price", "image_link", "mall_name", "category1", "category2"], //구하고자 하는 칼럼
+      attributes: ["product_id", "product_name", "price", "image_link", "mall_name", "category1", "category2", "category"], //구하고자 하는 칼럼
       //include통해 Member테이블과 연결
       include: {
         model: Member, //model로 연결할 테이블 정의합니다.

@@ -32,6 +32,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      category: {
+        //상품카테고리
+        type: Sequelize.STRING,
+      },
       category1: {
         //상품 카테고리1
         type: Sequelize.STRING,

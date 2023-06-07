@@ -202,24 +202,7 @@
       let scrap_item_id;
 
       //ajax 보내는 부분 : async api
-      async function sendAjax(url, data) {
-        var data = { scrapItemId: data }; //보내는 데이터
-        var dataInfo = {
-          method: "POST", //메소드 지정
-          body: JSON.stringify(data), //JSON형태로 변환
-          headers: {
-            "Content-Type": "application/json", //타입 지정
-          },
-        };
-
-        const reqURL = await fetch(url, dataInfo);
-        const result = await reqURL.json(); //JSON값 받아오기
-
-        //내부값 파악 후 로직 작성
-        if (result.result1 === "ok") {
-          console.log("scrap ok");
-        }
-      }
+     
       //스크랩을 등록하는 함수로, fetch api를 통해 main.js에 정의된 url들과 소통한다.
       async function addScrap(url, id) {
         fetch(url, {
