@@ -42,46 +42,46 @@
               </div>
 
               <div class="list-group mx-0 w-auto" style="overflow-y: scroll; height: 150px; margin-top: 30px;">
-                <label class="list-group-item d-flex gap-2">
-                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '서울시')">
+                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="서울시" checked="">
                 <span>
                     서울시
                 </span>
                 </label>
-                <label class="list-group-item d-flex gap-2">
-                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '경기도')">
+                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="경기도">                    
                 <span>
-                    경기도              
+                    경기도             
                 </span>
                 </label>
-                <label class="list-group-item d-flex gap-2">
-                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '강원도')">
+                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="강원도">
                 <span>
                     강원도                   
                 </span>
                 </label>
-                <label class="list-group-item d-flex gap-2">
-                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios4" value="">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '충청도')">
+                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios4" value="충청도">
                 <span>
                     충청도              
                 </span>
                 </label>
-                <label class="list-group-item d-flex gap-2">
-                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios5" value="">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '경상도')">
+                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios5" value="경상도">
                 <span>
                     경상도                   
                 </span>
                 </label>
-                <label class="list-group-item d-flex gap-2">
-                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios6" value="">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '전라도')">
+                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios6" value="전라도">                    
                 <span>
                     전라도              
                 </span>
                 </label>
-                <label class="list-group-item d-flex gap-2">
-                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios7" value="">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '제주도')">
+                <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios7" value="제주도">
                 <span>
-                    제주도                 
+                  제주도                 
                 </span>
                 </label>
               </div> 
@@ -194,6 +194,23 @@
                   map.setCenter(coords);
                   map.setLevel(1);
                 }
+              }
+
+              // 지역 주소에 따른 지도 중심 위치 설정, 지도 축소
+              function getRegion(map, rName) {
+                console.log("함수 호출 성공");
+
+                geocoder.addressSearch(rName, function(result, status) {
+                  // 정상적으로 검색이 완료됐으면
+                  if (status === kakao.maps.services.Status.OK) {
+                    console.log('주소 변환')
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                    map.setCenter(coords);
+                    map.setLevel(5);
+                  }
+                });
+                console.log("함수 성공");
               }
 
               
