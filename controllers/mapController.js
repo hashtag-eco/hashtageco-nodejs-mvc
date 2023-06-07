@@ -1,7 +1,35 @@
 const db = require("../models/index"),
   Map = db.store,
   Op = db.Sequelize.Op;
+const positions = [];
+const placeList = {};
 
+//카카오api에 마커 띄워 보여줄 db에 저장된 스토어 정보 담긴 배열 구함
+const getPositions = async () => {
+  let stores = await Map.findAll({
+    attributes: ['store_name', 'address', 'region_name']
+  });
+  console.log("a");
+  stores.forEach(element => {
+  placeList.title = element.dataValues.store_name;
+  placeList.address = element.dataValues.address;
+  positions.push({...placeList});
+});
+//console.log(positions);
+console.log('a');
+}
+
+// stores.forEach(element => {
+//   placeList.title = element.dataValues.store_name;
+//   placeList.address = element.dataValues.address;
+//   positions.push({...placeList});
+// });
+// for(let i = 0; i < stores.length; i++) {
+//   placeList.title = stores[i].dataValues.store_name;
+//   placeList.address = stores[i].dataValues.address;
+//   positions.push({...placeList});
+// }
+console.log(positions[0]);
 exports.map = (req, res) => {
   res.render("map");
 };
@@ -22,10 +50,7 @@ exports.map = (req, res) => {
 exports.getStore = async (req, res) => {
   console.log("controller함수 안");
   let category = req.params.category;
-  // let storelist = await Map.findAll({
-  //   attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count', 'is_upcycling', 'is_zero_waste', 'is_low_carbon']
-  // })
-    let showlist;
+  let showlist;
   try {
     switch (category) {
       case 'zerowaste' : {
@@ -59,59 +84,8 @@ exports.getStore = async (req, res) => {
   }catch(err) {
     return err;
   }
-  console.log(showlist);
-  res.render("mapwithstore", {showlist: showlist});
+  //console.log(showlist);
+  getPositions();
+  res.render("mapwithstore", {showlist: showlist, positionss: positions});
 }
-  // try {
-  //   const zwlist = await Product.findAll({
-  //     attributes : ['product_id', 'product_name', 'image_link', 'price', 'brand'],
-  //     //where : {}
-  //   })
-  //   console.log(zwlist);
-  //   console.log("데이터받아옴");
-  //   res.render("productByCategory/zerowasteProduct", {list : zwlist});
-  // }catch (err) {
-  //   return err;
-  // };
-  // try {
-
-  //   if (findUpcycling) {
-  //     const store = await store.findAll({
-  //       where: {
-  //         is_upcycling: 1,
-  //         attributes : ['store_id', 'store_name', 'address', 'region_name']
-  //       }
-  //       //where : {}
-  //     })
-  //   } else if (findZeroWaste) {
-  //     const store = await store.findAll({
-  //       where: {
-  //         is_zero_waste: 1,
-  //         attributes : ['store_id', 'store_name', 'address', 'region_name']
-  //       }
-  //     })
-  //   } else if (findLowCarbon) {
-  //     const store = await store.findAll({
-  //       where: {
-  //         is_low_carbon: 1,
-  //         attributes : ['store_id', 'store_name', 'address', 'region_name']
-  //       }
-  //   })
-  // }
-  //   console.log(store);
-  //   console.log("데이터받아옴");
-  //   res.render("map", {list : store});
-  // }catch (err) {
-  //   return err;
-  // };
-
-
-// exports.upcyclingStore = (req, res) => {
-//   let paramKeyword = req.param.paramKeyword;
-  
-//   this.map.findAll({
-//     where: {
-//       is_upcycling: true
-//     }
-//   });
-// }
+ 

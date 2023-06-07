@@ -1,6 +1,6 @@
-const router = require("express").Router(),
-  scrapController = require("../controllers/scrapController");
+const router = require('express').Router(),
+    productController = require('../controllers/productController');
 
-router.get("/", scrapController.productscrap);
+router.get("/", productController.showProductController);
 
 module.exports = router;

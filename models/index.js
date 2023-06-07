@@ -21,8 +21,21 @@ db.member = require("./member.js")(sequelize, Sequelize);
 db.productScrap = require("./ProductScrap.js")(sequelize, Sequelize);
 db.store = require("./Store.js")(sequelize, Sequelize);
 
+db.Zwproductscrap = require("./Zwproductscrap.js")(sequelize, Sequelize);
+db.Uproductscrap = require("./Uproductscrap.js")(sequelize, Sequelize);
+db.Lcproductscrap = require("./Lcproductscrap.js")(sequelize, Sequelize);
+
+
 //관계 정의
-//db.ProductScrap.belongsTo(db.member, {foreignKey : '})
-//db.member.belongsToMany(db.lcProduct, {through: 'db.productScrap'});
+// db.zproduct.belongsToMany(db.member, {through: 'ZProductScrap', foreignKey: 'product_id'} )
+// db.member.belongsToMany(db.zproduct, {through: 'ZProductScrap', foreignKey: 'member_id'}); //member와 product는 다대다 관계이다.
+db.member.belongsToMany(db.zproduct, { through: 'Zwproductscrap' , foreignKey: 'member_id'});
+//db.Zwproductscrap.belongsTo(db.member, {foreignKey: 'member_id'});
+db.zproduct.belongsToMany(db.member, {through: 'Zwproductscrap', foreignKey: 'product_id'});
+//db.Zwproductscrap.belongsTo(db.zproduct, {foreignKey: 'product_id'});
+
+
+
+
 
 module.exports = db;
