@@ -22,8 +22,7 @@ const express = require("express"),
   signup = require('./routes/signupRoute'),
   profile = require('./routes/profileRoute'),
   login = require('./routes/loginRoute'),
-  store = require('./routes/storeRoute');
-  
+  store = require('./routes/storeRoute'),
   logout = require("./routes/logoutRoute"); // 로그아웃 라우터 추가
 app.set("view engine", "ejs");
 
@@ -59,7 +58,7 @@ app.use("/product", product);
 app.use("/upcyclingProduct", upcyclingProduct);
 app.use("/zeroWasteProduct", zeroWasteProduct);
 app.use("/lowCarbonProduct", lowCarbonProduct);
-app.use("/productdetail", productdetail);
+app.use("/productdetail", productdetail); //상품상세
 app.use("/productscrap", productscrap);
 app.use("/mapscrap", mapscrap);
 app.use("/login", login);

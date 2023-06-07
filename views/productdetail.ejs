@@ -23,11 +23,11 @@
     <link rel="stylesheet" href="./css/productdetail.css" />
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180" />
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png" />
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <!-- <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png" /> -->
+    <!-- <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png" /> -->
     <link rel="manifest" href="/docs/5.2/assets/img/favicons/manifest.json" />
     <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9" />
-    <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico" />
+    <!-- <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico" /> -->
     <meta name="theme-color" content="#712cf9" />
 
     <style>
@@ -88,25 +88,30 @@
   </head>
   <body>
     <main>
-      <div class="container marketing">
+      <div style="margin-bottom: 200px" class="container marketing">
         <!-- 상품 상세 설명 -->
         <br />
         <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1 mb-3" style="font-weight: bold"><%= pdetails[0].dataValues.product_name %></h2>
+          <div class="col-md-7" style="margin-top: 75px">
+            <h1 class="featurette-heading lh-1 mb-3"><span style="line-height: 120%"><%= pdetails[0].dataValues.product_name %></span></h1>
+            <p class="lead">
+              <a style="text-decoration-line: none; color: rgb(49, 110, 49); font-weight: 400; font-style: oblique; margin-left: 510px" href="<%= pdetails[0].dataValues.url_link %>">
+                >> 판매링크로 이동하기</a
+              >
+            </p>
 
-            <hr class="featurette-divider" />
-            <p class="lead">가격  |  <%= pdetails[0].dataValues.price %>원</p>
-            <p class="lead">판매mall | <%= pdetails[0].dataValues.mall_name %></p>
-            <p class="lead">상위 카테고리 | <%= pdetails[0].dataValues.category1 %></p>
-            <p class="lead">하위 카테고리 | <%= pdetails[0].dataValues.category2 %></p>
-            <p class="lead"><a href="<%= pdetails[0].dataValues.url_link %>">판매링크로 이동하기</a></p>
+            <hr class="featurette-divider" style="margin-bottom: 50px; margin-top: 20px" />
+            <h5 class="lead" style="margin-bottom: 20px"><span style="font-weight: bold; color: rgb(49, 110, 49)">가격 | </span> <%= pdetails[0].dataValues.price %>원</h5>
+            <h5 class="lead" style="margin-bottom: 20px"><span style="font-weight: bold; color: rgb(49, 110, 49)">판매mall | </span> <%= pdetails[0].dataValues.mall_name %></h5>
+            <h5 class="lead" style="margin-bottom: 20px"><span style="font-weight: bold; color: rgb(49, 110, 49)">상위 카테고리 | </span> <%= pdetails[0].dataValues.category1 %></h5>
+            <h5 class="lead" style="margin-bottom: 20px"><span style="font-weight: bold; color: rgb(49, 110, 49)">하위 카테고리 | </span> <%= pdetails[0].dataValues.category2 %></h5>
+
+            <!-- <p class="lead"><a style="text-decoration-line: none; color: rgb(49, 110, 49); font-style: oblique" href="<%= pdetails[0].dataValues.url_link %>">판매링크로 이동하기</a></p> -->
           </div>
           <!-- margin-top으로 navbar와 상품이미지와의 간격 조정함 -->
-          <div class="col-md-5" style="margin-top: 50px">
+          <div class="col-md-5" style="margin-top: 75px">
             <!-- 상품 이미지 -->
-
-            <svg
+            <!-- <svg
               class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
               width="0"
               height="0"
@@ -115,23 +120,23 @@
               aria-label="Placeholder: 500x500"
               preserveAspectRatio="xMidYMid slice"
               focusable="false"
-            >
-            <img src="<%=pdetails[0].dataValues.image_link%>"/>
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee" />
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
-            <div class="card-body" style="margin-top: 30px">
+            > -->
+            <img src="<%=pdetails[0].dataValues.image_link%>" style="width: 550px" />
+            <!-- <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#eee" /> -->
+            <!-- <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text> -->
+            <!-- </svg> -->
+            <!-- <div class="card-body" style="margin-top: 30px">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <!-- 버튼 라우트 설정 아직 안됨 -->
-                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Back</button> -->
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
+                버튼 라우트 설정 아직 안됨
+                <button type="button" class="btn btn-sm btn-outline-secondary">Back</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Scrap</button>
                 </div>
-                <!-- 스크랩수 정렬 구현 못하면 지우기 -->
+                스크랩수 정렬 구현 못하면 지우기
                 <small class="text-muted">스크랩수 넣기</small>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
