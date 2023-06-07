@@ -173,6 +173,7 @@ const getScrapList = async(uid) => { //인자 uid는 세션의 멤버 아이디
 //상품스크랩 삭제
 exports.deleteProductScrap = async(req, res) => {
   const uid = req.session.idx;
+  console.log("상품스크랩컨트롤러 안");
   try { 
     //삭제할 아이템이 제로웨이스트 상품인 경우
     if(req.body.category == 'zerowaste') {
@@ -203,9 +204,11 @@ exports.deleteProductScrap = async(req, res) => {
     }
     
   } catch (err) {
-
+    return err;
   }
-  const newList = getScrapList(uid);
+  console.log("del ok");
+  const newList = await getScrapList(uid);
+
   res.render("productscrap", {scrapList: newList});
 }
 

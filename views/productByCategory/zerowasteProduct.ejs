@@ -134,7 +134,9 @@
                     <div class="btn-group">
                       <!-- 버튼 라우트 설정 아직 안됨 -->
                       <a href="/productdetail/zerowaste/<%= parseInt(s.dataValues.product_id) %>" class="btn btn-sm btn-outline-secondary">Detail</a>
-                      <button id="scrap" type="button" onclick="addScrap('/zeroWasteProduct/:page',<%- JSON.stringify(s.dataValues.product_id) %>) " class="btn btn-sm btn-outline-secondary" selected="true">Scrap</button>
+                      <button id="scrap" type="button" 
+                            onclick="addScrap('/zeroWasteProduct/:page',<%- JSON.stringify(s.dataValues.product_id) %>)" 
+                            class="btn btn-sm btn-outline-secondary" selected="true">Scrap</button>
                     </div>
                     <!-- 스크랩수 정렬 구현 못하면 지우기 -->
                     <small class="text-muted">스크랩수 넣기</small>
@@ -220,9 +222,18 @@
             scrapItemId : id,
           })
         })
-        .then(response => response.json())
+        .then(responseData => response.json())
         .then(json => console.log(json))
+        isScraped(responseData.stete);
         //location.reload();
+      }
+
+      function isScraped(state) {
+        const target = document.getElementById('scrap');
+
+        if (state == 'scraped') {
+          target.disabled = true;
+        }
       }
      
     </script>
