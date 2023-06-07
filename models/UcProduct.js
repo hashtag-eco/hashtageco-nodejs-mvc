@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
     const ucproduct = sequelize.define(
       "ucproduct",
       {
-        productId: {
+        product_id: {
           //기본키
           type: Sequelize.INTEGER,
           primaryKey: true,

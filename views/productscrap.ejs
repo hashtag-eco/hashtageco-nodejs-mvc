@@ -99,6 +99,7 @@
       <!-- 스크랩북 ver2 -->
       <div class="my-3 p-3 bg-body rounded shadow-sm">
         <!-- <h6 class="border-bottom pb-2 mb-0">Suggestions</h6> -->
+        <% scrapList.forEach(s => { %>
         <!-- 스크랩 1 -->
         <div class="d-flex text-muted pt-3">
           <svg
@@ -107,10 +108,11 @@
             height="32"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-label="Placeholder: 32x32"
+            aria-label="Placeholder:"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           >
+          <img src = "<%= s.dataValues.image_link %>" style="width: 32px; height: 32px"/>
             <title>Placeholder</title>
             <rect width="100%" height="100%" fill="#007bff" />
             <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
@@ -118,83 +120,21 @@
 
           <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
             <div class="d-flex justify-content-between">
-              <strong class="text-gray-dark">상품 이름</strong>
+              <strong class="text-gray-dark"><%= s.dataValues.product_name %></strong>
               <div>
                 <!-- 해시태그에코 내 상품상세페이지로 이동하는 버튼 -->
                 <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
                 <!-- 스크랩을 취소하는 버튼 -->
-                <button type="button" class="btn btn-sm btn-outline-secondary">UnScrap</button>
+                <button type="button" onclick="delScrap('/productscrap',<%- JSON.stringify(s.dataValues.product_id) %>, <%- JSON.stringify(s.dataValues.category) %>) " class="btn btn-sm btn-outline-secondary">UnScrap</button>
               </div>
             </div>
 
-            <span>상품 가격</span> <span> / </span> <span>상품 판매사</span>
+            <span><%= s.dataValues.price %></span> <span> / </span> <span><%= s.dataValues.mall_name %></span>
             <span class="d-block">상품 구매링크</span>
           </div>
         </div>
-        <!-- 스크랩 2 -->
-        <div class="d-flex text-muted pt-3">
-          <svg
-            class="bd-placeholder-img flex-shrink-0 me-2 rounded"
-            width="32"
-            height="32"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Placeholder: 32x32"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#007bff" />
-            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-          </svg>
-
-          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-            <div class="d-flex justify-content-between">
-              <strong class="text-gray-dark">상품 이름</strong>
-              <div>
-                <!-- 해시태그에코 내 상품상세페이지로 이동하는 버튼 -->
-                <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                <!-- 스크랩을 취소하는 버튼 -->
-                <button type="button" class="btn btn-sm btn-outline-secondary">UnScrap</button>
-              </div>
-            </div>
-
-            <span>상품 가격</span> <span> / </span> <span>상품 판매사</span>
-            <span class="d-block">상품 구매링크</span>
-          </div>
-        </div>
-        <!-- 스크랩 3 -->
-        <div class="d-flex text-muted pt-3">
-          <svg
-            class="bd-placeholder-img flex-shrink-0 me-2 rounded"
-            width="32"
-            height="32"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Placeholder: 32x32"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#007bff" />
-            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-          </svg>
-
-          <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-            <div class="d-flex justify-content-between">
-              <strong class="text-gray-dark">상품 이름</strong>
-              <div>
-                <!-- 해시태그에코 내 상품상세페이지로 이동하는 버튼 -->
-                <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                <!-- 스크랩을 취소하는 버튼 -->
-                <button type="button" class="btn btn-sm btn-outline-secondary">UnScrap</button>
-              </div>
-            </div>
-
-            <span>상품 가격</span> <span> / </span> <span>상품 판매사</span>
-            <span class="d-block">상품 구매링크</span>
-          </div>
-        </div>
+        <% }) %>
+        
         <!-- <small class="d-block text-end mt-3">
           <a href="#">All suggestions</a>
         </small> -->
@@ -216,6 +156,29 @@
 
     <!-- scrap.js 불러오기 -->
     <script src="./js/scrap.js"></script>
+
+    <!-- 스크랩 아이템 삭제 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script> 
+      
+      //스크랩을 등록하는 함수로, fetch api를 통해 main.js에 정의된 url들과 소통한다.
+      async function delScrap(url, id, c) {
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            scrapItemId : id,
+            category : c,
+          })
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        location.reload();
+      }
+     
+    </script>
   </body>
 </html>
 
