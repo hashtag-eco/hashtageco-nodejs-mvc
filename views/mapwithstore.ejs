@@ -29,7 +29,7 @@
           <div class="row">
             <div class="col-lg-4" style="height: 800px; margin-top: 30px;">
               <div class="section-title">
-                <h2> 스토어 이름 </h2>
+                <h2>스토어 이름</h2>
                 <p> 주소 </p>
                 <p> 웹 주소 </p>
               </div>
@@ -84,7 +84,12 @@
                   제주도                 
                 </span>
                 </label>
-              </div> 
+                <!-- <script>
+                  //radio 버튼 클릭 이벤트 
+                  $("input:radio[name=listGroupRadios]").click(getRegion(map, $("input:radio[name=listGroupRadios]:checked").val()));
+        
+                </script> -->
+              </div>  
 
               <!-- 키워드 별 스토어 목록 -->
               <div class="list-group list-group-flush border-bottom scrollarea">
@@ -95,49 +100,39 @@
                         <strong class="mb-1" style="cursor: pointer;" onclick="window.open('<%= s.dataValues.web_link %>')"><%= s.dataValues.store_name %></strong>
                       </div>
                       <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
-                      
                       <!-- <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div> -->
-                      <button onClick="idx = <% JSON.stringify(s.dataValues.address) %>; showSpecificLocation(idx)" type="button" class="btn btn-sm btn-outline-secondary" selected="true">위치 지도에서 보기</button>
+                      <button type="button" onclick="showSpecificLocation('서울특별시 관악구 관악로 1')" class="btn btn-sm btn-outline-secondary" selected="true"> 위치 지도에서 보기 </button>
                       <!-- <a href="<%= s.dataValues.web_link %>"><%= s.dataValues.web_link %></a> -->
-                      
                     </a>  
                   <% }) %>    
                 </div>  
-              </div>
+              </div>  
 
             </div>
-
+          
           <!-- 오른쪽 부분 -->
            <!-- 지도 -->
           <div class="col">
             <div id="map" style="border: 0; width: 100%; height: 100%"></div>
             <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c55f3d0a9881207c994227a57debd91&libraries=services"></script>
             <script>
-              var idx = 0;
-
-              //let addresses = [];
-              //let sizal;
               var mapContainer = document.getElementById("map");
                  mapOption = {
                     center: new kakao.maps.LatLng(37.5912999, 127.0221068),
                     level: 3,
               };
-              
+
               // 지도를 생성합니다
               var map = new kakao.maps.Map(mapContainer, mapOption);
 
               // 주소-좌표 변환 객체를 생성합니다
               var geocoder = new kakao.maps.services.Geocoder();
 
-              //position에 db에서 가져오는 데이터 넣기
               var positions = <%- JSON.stringify(positionss) %>;
               var addr = <%- JSON.stringify(addresses) %>;
 
               // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
               var bounds = new kakao.maps.LatLngBounds(); //추가한 코드
-
-             
-            
 
               positions.forEach(function (position) {
                 // 주소로 좌표를 검색합니다
@@ -196,7 +191,6 @@
                 }
               }
 
-              // 지역 주소에 따른 지도 중심 위치 설정, 지도 축소
               function getRegion(map, rName) {
                 console.log("함수 호출 성공");
 
@@ -213,35 +207,24 @@
                 console.log("함수 성공");
               }
 
-              
               async function showSpecificLocation(storeAdd) {
-            
-                //console.log("showSpecific");
-                //console.log(storeAdd);
-                //alert(typeof storeAdd);
 
-                await geocoder.addressSearch(addr[storeAdd], function(result, status) {
+                await geocoder.addressSearch(storeAdd, function(result, status) {
 
+                  alert(storeAdd);
                   // 정상적으로 검색이 완료됐으면
                   if (status === kakao.maps.services.Status.OK) {
-                      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                  }
+                    console.log('주소 변환')
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-                  map.setCenter(coords);
+                    map.setCenter(coords);
+                  } 
                 })
 
               }
-              //스크랩을 등록하는 함수로, fetch api를 통해 main.js에 정의된 url들과 소통한다.
-              function addScrap(scrapItemId) {
-                fetch("http://localhost:3000/zeroWasteProduct/:page" + scrapItemId, {
-                  method: "POST"
-                })
-                .then(response => response.json())
-                .then(json => console.log(json))
-                location.reload();
-              }
 
-              map.setCenter(37.5912999, 127.0221068); 
+
+              map.setCenter(37.5912999, 127.0221068);
             </script>
             </div>
           </div>
