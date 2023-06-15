@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
     const ucproduct = sequelize.define(
       "ucproduct",
       {
-        productId: {
+        product_id: {
           //기본키
           type: Sequelize.INTEGER,
           primaryKey: true,
@@ -28,6 +28,10 @@ module.exports = (sequelize, Sequelize) => {
         },
         scrapCount: {
           //상품스크랩수
+          type: Sequelize.STRING,
+        },
+        category: {
+          //상품카테고리
           type: Sequelize.STRING,
         },
         category1: {

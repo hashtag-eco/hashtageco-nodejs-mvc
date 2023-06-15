@@ -8,22 +8,21 @@ const express = require("express"),
   FileStore = require("session-file-store")(session), // 추가
   http = require("http").createServer(app), // 쿠키를 생성하는 웹 서버
   errorController = require("./controllers/errorController"),
-  productController = require('./controllers/productController'),
+  productController = require("./controllers/productController"),
   //Router 모듈 사용
-  home = require('./routes/homeRoute'),
-  map = require('./routes/mapRoute'),
-  product = require('./routes/productRoute'),
-  zeroWasteProduct = require('./routes/zeroWasteProductRoute'),
-  upcyclingProduct = require('./routes/upcyclingProductRoute'),
-  lowCarbonProduct = require('./routes/lowCarbonProductRoute'),
-  productdetail = require('./routes/productDetailRoute'),
-  productscrap = require('./routes/productScrapRoute'),
-  mapscrap = require('./routes/mapScrapRoute'),
-  signup = require('./routes/signupRoute'),
-  profile = require('./routes/profileRoute'),
-  login = require('./routes/loginRoute'),
-  store = require('./routes/storeRoute');
-  
+  home = require("./routes/homeRoute"),
+  map = require("./routes/mapRoute"),
+  product = require("./routes/productRoute"),
+  zeroWasteProduct = require("./routes/zeroWasteProductRoute"),
+  upcyclingProduct = require("./routes/upcyclingProductRoute"),
+  lowCarbonProduct = require("./routes/lowCarbonProductRoute"),
+  productdetail = require("./routes/productDetailRoute"),
+  productscrap = require("./routes/productScrapRoute"),
+  mapscrap = require("./routes/mapScrapRoute"),
+  signup = require("./routes/signupRoute"),
+  profile = require("./routes/profileRoute"),
+  login = require("./routes/loginRoute"),
+  store = require("./routes/storeRoute"),
   logout = require("./routes/logoutRoute"); // 로그아웃 라우터 추가
 app.set("view engine", "ejs");
 
@@ -59,7 +58,7 @@ app.use("/product", product);
 app.use("/upcyclingProduct", upcyclingProduct);
 app.use("/zeroWasteProduct", zeroWasteProduct);
 app.use("/lowCarbonProduct", lowCarbonProduct);
-app.use("/productdetail", productdetail);
+app.use("/productdetail", productdetail); //상품상세
 app.use("/productscrap", productscrap);
 app.use("/mapscrap", mapscrap);
 app.use("/login", login);

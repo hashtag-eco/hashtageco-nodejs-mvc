@@ -24,155 +24,208 @@
     <!-- main태그와 section태그 추가 -->
     <main>
       <section class="py-5 text-center container">
-        <div class="container" style="margin: 50px auto">
+        <div class="container">
+          <!-- 왼쪽 부분 -->
           <div class="row">
-            <div class="col-lg-4" style="height: 800px">
-              <div class="section-title">
-                <h2>Contact</h2>
-                <p>
-                  Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-                  suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.
-                </p>
+            <div class="col-lg-4" style="height: 800px; margin-top: 30px">
+              <div id="selected_store" class="section-title">
+                <h2 id="store_name">스토어 이름</h2>
+                <p id="store_address">주소</p>
+                <a href="" id="web_link"> 웹 주소 </a>
               </div>
 
-              <div class="d-grid gap-2 d-md-block" style="text-align: center; margin-top: 50px">
-                <button onclick="location.href='/map/zerowaste'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">제로 웨이스트</button>
-                <button onclick="location.href='/map/lowcarbon'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">저탄소</button>
-                <button onclick="location.href='/map/upcycling'" class="btn btn-primary" type="button" style="background-color: rgb(36, 153, 36); border-color: rgb(36, 153, 36); margin: 0 5px">업사이클링</button>
-                </div>
-                <div class="list-group mx-0 w-auto" style="margin-top: 30px;">
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked="">
-                    <span>
-                        서울시
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
-                    <span>
-                        경기도              
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
-                    <span>
-                        강원도                   
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios4" value="">
-                    <span>
-                        충청도              
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios5" value="">
-                    <span>
-                        경상도                   
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios6" value="">
-                    <span>
-                        전라도              
-                    </span>
-                    </label>
-                    <label class="list-group-item d-flex gap-2">
-                    <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios7" value="">
-                    <span>
-                        제주도                 
-                    </span>
-                    </label>
-                </div>
+              <!-- 키워드 선택 버튼 -->
+              <div class="d-grid gap-2 d-md-block" style="text-align: center; margin-top: 30px">
+                <button onclick="location.href='/map/zerowaste'" class="btn btn-primary" type="button" style="background-color: rgb(49, 110, 49); border-color: rgb(49, 110, 49); margin: 0 5px">
+                  제로 웨이스트
+                </button>
+                <button onclick="location.href='/map/upcycling'" class="btn btn-primary" type="button" style="background-color: rgb(49, 110, 49); border-color: rgb(49, 110, 49); margin: 0 5px">
+                  업사이클링
+                </button>
+                <button onclick="location.href='/map/lowcarbon'" class="btn btn-primary" type="button" style="background-color: rgb(49, 110, 49); border-color: rgb(49, 110, 49); margin: 0 5px">
+                  저탄소
+                </button>
+              </div>
 
-                <div class="list-group list-group-flush border-bottom scrollarea">
-                    <div style="overflow-y: scroll; width: 100%; height: 300px; margin-top: 30px;">
-                        <% showlist.forEach(s => { %>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
-                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                <strong class="mb-1"><%= s.dataValues.store_name %></strong>
-                                <small>Wed</small>
-                                </div>
-                                <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
-                                <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div>
-                            </a>
-                            <% }) %>
-                    
-                    
-                    
+              <div class="list-group mx-0 w-auto" style="overflow-y: scroll; height: 150px; margin-top: 30px">
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '서울시')">
+                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="서울시" checked="" />
+                  <span> 서울시 </span>
+                </label>
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '경기도')">
+                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="경기도" />
+                  <span> 경기도 </span>
+                </label>
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '강원도')">
+                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="강원도" />
+                  <span> 강원도 </span>
+                </label>
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '충청도')">
+                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios4" value="충청도" />
+                  <span> 충청도 </span>
+                </label>
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '경상도')">
+                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios5" value="경상도" />
+                  <span> 경상도 </span>
+                </label>
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '전라도')">
+                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios6" value="전라도" />
+                  <span> 전라도 </span>
+                </label>
+                <label class="list-group-item d-flex gap-2" onclick="getRegion(map, '제주도')">
+                  <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios7" value="제주도" />
+                  <span> 제주도 </span>
+                </label>
+              </div>
+
+              <!-- 키워드 별 스토어 목록 -->
+              <div class="list-group list-group-flush border-bottom scrollarea">
+                <div style="overflow-y: scroll; width: 100%; height: 400px; margin-top: 30px">
+                  <% showlist.forEach(s => { %>
+                  <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                      <strong class="mb-1" style="cursor: pointer" onclick="window.open('<%= s.dataValues.web_link %>')"><%= s.dataValues.store_name %></strong>
                     </div>
+                    <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-outline-secondary"
+                      selected="true"
+                      onclick='showSpecificLocation("/",<%- JSON.stringify(s.dataValues.address)%>, <%- JSON.stringify(s.dataValues.store_name)%>, <%- JSON.stringify(s.dataValues.web_link)%>)'
+                    >
+                      위치 지도에서 보기
+                    </button>
+                  </a>
+                  <% }) %>
                 </div>
-            
-
+              </div>
             </div>
 
-           <!-- 지도 -->
-           <div class="col">
-            <div id="map" style="border: 0; width: 100%; height: 100%"></div>
-            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c55f3d0a9881207c994227a57debd91&libraries=services"></script>
-            <script>
-              var mapContainer = document.getElementById("map");
-                 mapOption = {
-                    center: new kakao.maps.LatLng(37.5912999, 127.0221068),
-                    level: 3,
-              };
+            <!-- 오른쪽 부분 -->
+            <!-- 지도 -->
+            <div class="col">
+              <div id="map" style="border: 0; width: 100%; height: 100%"></div>
+              <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c55f3d0a9881207c994227a57debd91&libraries=services"></script>
+              <script>
+                var mapContainer = document.getElementById("map");
+                   mapOption = {
+                      center: new kakao.maps.LatLng(37.5912999, 127.0221068),
+                      level: 3,
+                };
 
-              // 지도를 생성합니다
-              var map = new kakao.maps.Map(mapContainer, mapOption);
+                // 지도를 생성합니다
+                var map = new kakao.maps.Map(mapContainer, mapOption);
 
-              // 주소-좌표 변환 객체를 생성합니다
-              var geocoder = new kakao.maps.services.Geocoder();
+                // 주소-좌표 변환 객체를 생성합니다
+                var geocoder = new kakao.maps.services.Geocoder();
 
-            
+                var positions = <%- JSON.stringify(positionss) %>;
 
-              //position에 db에서 가져오는 데이터 넣기
-              var positions = [
-              {
-                title: '카카오',
-                address: '제주특별자치도 제주시 첨단로 242'
-              },
-              {
-                title: '생태연못',
-                address: '경기 남양주시 조안면 능내리 50'
-              },
-              {
-                title: '근린공원',
-                address: '경기 남양주시 별내면 청학로68번길 40'
-              }
-              ];
+                // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
+                var bounds = new kakao.maps.LatLngBounds(); //추가한 코드
 
-              positions.forEach(function (position) { 
-                // 주소로 좌표를 검색합니다
-                geocoder.addressSearch(position.address, function(result, status) {
+                positions.forEach(function (position) {
+                  // 주소로 좌표를 검색합니다
+                  geocoder.addressSearch(position.address, function(result, status) {
 
-                  // 정상적으로 검색이 완료됐으면
-                  if (status === kakao.maps.services.Status.OK) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === kakao.maps.services.Status.OK) {
 
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-                    // 결과값으로 받은 위치를 마커로 표시합니다
-                    var marker = new kakao.maps.Marker({
-                      map: map,
-                      position: coords
-                    });
+                      // 결과값으로 받은 위치를 마커로 표시합니다
+                      var marker = new kakao.maps.Marker({
+                        map: map,
+                        position: coords
+                      });
+                      marker.setMap(map); //추가한 코드
 
-                    marker.setMap(map); //추가한 코드
+                      // LatLngBounds 객체에 좌표를 추가합니다
+                      bounds.extend(coords); //추가한 코드, 현재 코드에서 좌표정보는 point[i]가 아닌 coords이다.
 
-                    // LatLngBounds 객체에 좌표를 추가합니다
-                    bounds.extend(coords); //추가한 코드, 현재 코드에서 좌표정보는 point[i]가 아닌 coords이다.
+                      // 인포윈도우로 장소에 대한 설명을 표시합니다
+                      var infowindow = new kakao.maps.InfoWindow({
+                        content: '<div style="width:150px;text-align:center;padding:6px 0;">' + position.title + '</div>'
+                      });
 
-                    // 인포윈도우로 장소에 대한 설명을 표시합니다
-                    var infowindow = new kakao.maps.InfoWindow({
-                    content: '<div style="width:150px;text-align:center;padding:6px 0;">' + position.title + '</div>'
-                    });
-                    infowindow.open(map, marker);
+                      // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+                      // 이벤트 리스너로는 클로저를 만들어 등록합니다
+                      // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+                      kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+                      kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+                      // 마커 클릭이벤트
+                      kakao.maps.event.addListener(marker, 'click', setmapview(map, coords));
+                    }
 
-                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                    //map.setCenter(coords);
-                  }
+                  });
                 });
-              }); 
-            </script>
+                // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+                function makeOverListener(map, marker, infowindow) {
+                    return function() {
+                        infowindow.open(map, marker);
+                    };
+                }
+
+                // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+                function makeOutListener(infowindow) {
+                    return function() {
+                        infowindow.close();
+                    };
+                }
+
+                // 마커 클릭시 마커를 중심 위치로 설정, 지도 확대
+                function setmapview(map, coords) {
+                  return function() {
+                    map.setCenter(coords);
+                    map.setLevel(1);
+                  }
+                }
+
+                function getRegion(map, rName) {
+                  console.log("함수 호출 성공");
+
+                  geocoder.addressSearch(rName, function(result, status) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === kakao.maps.services.Status.OK) {
+                      console.log('주소 변환')
+                      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                      map.setCenter(coords);
+                      map.setLevel(5);
+                    }
+                  });
+                  console.log("함수 성공");
+                }
+
+                async function showSpecificLocation(a, storeAdd, name, link) {
+
+                  await geocoder.addressSearch(storeAdd, function(result, status) {
+
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === kakao.maps.services.Status.OK) {
+                      console.log('주소 변환')
+                      var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                      map.setCenter(coords);
+                    }
+                  })
+                  setInnerText(name, storeAdd, link);
+
+                }
+
+                function setInnerText(name, address, link) {
+                  const element1 = document.getElementById('store_name');
+                  element1.innerText = name;
+                  const element2 = document.getElementById('store_address');
+                  element2.innerText = address;
+                  const element3 = document.getElementById('web_link');
+                  element3.innerText = link;
+                  element3.href = link;
+
+                 }
+
+                map.setCenter(37.5912999, 127.0221068);
+              </script>
             </div>
           </div>
         </div>
@@ -182,7 +235,7 @@
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"            
+      crossorigin="anonymous"
     ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"

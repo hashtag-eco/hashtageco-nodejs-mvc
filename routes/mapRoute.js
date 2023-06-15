@@ -3,5 +3,6 @@ const router = require('express').Router(),
     
 //router.get("/", mapController.map);
 router.get("/:category", mapController.getStore);
+//router.get("/category", mapController.updateMap);
 
 module.exports = router;

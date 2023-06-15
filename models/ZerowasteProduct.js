@@ -4,7 +4,7 @@ module.exports = (sequelize, Sequelize) => {
   const product = sequelize.define(
     "product",
     {
-      productId: {
+      product_id: {
         //기본키
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -31,6 +31,10 @@ module.exports = (sequelize, Sequelize) => {
         //상품스크랩수
         type: Sequelize.STRING,
         allowNull: true,
+      },
+      category: {
+        //상품카테고리
+        type: Sequelize.STRING,
       },
       category1: {
         //상품 카테고리1
