@@ -31,9 +31,6 @@
     <meta name="theme-color" content="#712cf9" />
 
     <style>
-      /* .container {
-        max-width: 960px;
-      } */
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -90,9 +87,7 @@
     <div class="container">
       <main>
         <div class="py-5 text-center">
-          <!-- h2태그 내부에 적힌 거 변경해도 됨 -->
           <h2 style="font-weight: bold">Profile</h2>
-          <!-- p태그 내부에 적힌 거 변경해도 됨 -->
           <p class="lead">프로필</p>
         </div>
 
@@ -105,40 +100,31 @@
                 <!-- 기존 이름 -->
                 <div class="col-sm-6">
                   <label for="firstName" class="form-label">Name</label>
-                  <!-- <input name="name" id="name" type="text" class="form-control" placeholder="기존 이름" value="" required /> -->
                   <p class="form-control"><%= memberData[0].dataValues.name %></p>
                   <div id="nameError" class="invalid-feedback">이름을 다시 입력해주세요</div>
                 </div>
                 <!-- 기존 닉네임 -->
                 <div class="col-sm-6">
                   <label for="lastName" class="form-label">Nickname</label>
-                  <!-- <input name="nickname" id="nickname" type="text" class="form-control" placeholder="기존 닉네임" value="" required /> -->
                   <p class="form-control"><%= memberData[0].dataValues.nickname %></p>
-
                   <div id="nicknameError" class="invalid-feedback">닉네임을 다시 입력해주세요</div>
                 </div>
                 <!-- 기존 이메일 -->
                 <div class="col-12">
                   <label for="email" class="form-label">Email</label>
-                  <!-- <input name="email" id="email" type="email" class="form-control" placeholder="기존 이메일" /> -->
                   <p class="form-control"><%= memberData[0].dataValues.email %></p>
-
                   <div id="emailError" class="invalid-feedback">이메일을 다시 입력해주세요</div>
                 </div>
                 <!-- 기존 비밀번호 -->
                 <div class="col-12">
                   <label for="address" class="form-label">Password</label>
-                  <!-- <input name="password" id="password" type="password" class="form-control" placeholder="기존 비밀번호" required /> -->
                   <p class="form-control"><%= memberData[0].dataValues.password %></p>
-
                   <div id="passwordError" class="invalid-feedback">비밀번호를 다시 입력해주세요</div>
                 </div>
                 <!-- 새로운 비밀번호 -->
                 <form action="profile" method="POST">
                   <div class="col-12">
-                    <!-- <label for="address" class="form-label">New Password</label>
                     <input name="newpassword" id="newpassword" type="password" class="form-control" placeholder="새로운 비밀번호 (8자리 이상 16자리 이하)" required />
-                   -->
                       <label for="address" class="form-label">Password</label> <small> <span id="makyText">:: 비밀번호 조건을 지켜주세요 ::</span></small>
                       <!-- input 태그의 required 속성으로 공백오류 처리 -->
                       <input
@@ -152,17 +138,19 @@
                       />
                     <div id="passwordError" class="invalid-feedback">비밀번호를 다시 입력해주세요</div>
                   </div>
+
                    <!-- 위아래 간격 조정 -->
                   <br />
                   <br />
-                  <!-- 프로필수정 버튼 -->
+
+                  <!-- 비밀번호 수정 버튼 -->
                   <button style="background-color: rgb(49, 110, 49); color: white" class="w-100 btn btn-lg" type="submit">비밀번호 변경하기</button>
               </div>
 
-            
               <!-- 위아래 간격 조정 -->
               <br />
               <br />
+
             </form>
           </div>
         </div>
@@ -253,6 +241,7 @@
     }
     </script>
       
+    <!-- profile.js 불러오기 -->
     <script src="./js/profile.js"></script>
   </body>
 </html>

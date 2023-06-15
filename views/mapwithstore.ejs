@@ -76,11 +76,6 @@
                   <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios7" value="제주도" />
                   <span> 제주도 </span>
                 </label>
-                <!-- <script>
-                  //radio 버튼 클릭 이벤트 
-                  $("input:radio[name=listGroupRadios]").click(getRegion(map, $("input:radio[name=listGroupRadios]:checked").val()));
-        
-                </script> -->
               </div>
 
               <!-- 키워드 별 스토어 목록 -->
@@ -92,7 +87,6 @@
                       <strong class="mb-1" style="cursor: pointer" onclick="window.open('<%= s.dataValues.web_link %>')"><%= s.dataValues.store_name %></strong>
                     </div>
                     <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
-                    <!-- <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div> -->
                     <button
                       type="button"
                       class="btn btn-sm btn-outline-secondary"
@@ -101,7 +95,6 @@
                     >
                       위치 지도에서 보기
                     </button>
-                    <!-- <a href="<%= s.dataValues.web_link %>"><%= s.dataValues.web_link %></a> -->
                   </a>
                   <% }) %>
                 </div>

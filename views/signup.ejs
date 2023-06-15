@@ -31,9 +31,6 @@
     <meta name="theme-color" content="#712cf9" />
 
     <style>
-      /* .container {
-        max-width: 960px;
-      } */
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -152,18 +149,14 @@
   </head>
   <body>
     <div class="container">
-      <!-- <form id="signup-form" name="signup-form" action="/signup" method="post" class="needs-validation" novalidate> -->
       <main>
         <div class="py-5 text-center">
-          <!-- h2태그 내부에 적힌 거 변경해도 됨 -->
           <h2 style="font-weight: bold">Sign up</h2>
-          <!-- p태그 내부에 적힌 거 변경해도 됨 -->
           <p class="lead">회원가입</p>
         </div>
 
         <div class="row g-5 d-flex justify-content-center justify-content-center">
-          <!-- 회원가입 입력 -->
-          <!-- 입력 받을 내용 및 input 변경해도 됨 -->
+          <!-- 회원가입 -->
           <div class="col-md-7 col-lg-8">
             <form id="signup-form" name="signup-form" action="/signup" method="post">
               <div class="row g-3">
@@ -172,24 +165,22 @@
                   <label for="firstName" class="form-label">Name</label>
                   <!-- input 태그의 required 속성으로 공백오류 처리 -->
                   <input name="name" id="name" type="text" class="form-control" placeholder="이름을 입력해주세요" value="" required />
-                  <!-- <div id="nameError" class="invalid-feedback"></div> -->
                 </div>
                 <!-- 닉네임 입력 -->
                 <div class="col-sm-6">
                   <label for="lastName" class="form-label">Nickname</label>
                   <!-- input 태그의 required 속성으로 공백오류 처리 -->
                   <input name="nickname" id="nickname" type="text" class="form-control" placeholder="닉네임을 입력해주세요" value="" required />
-                  <!-- <div id="nicknameError" class="invalid-feedback"></div> -->
                 </div>
                 <!-- 이메일 입력 -->
                 <div class="col-12">
                   <label for="email" class="form-label">Email</label>
                   <!-- input 태그의 required 속성으로 공백오류 처리 -->
                   <input name="email" id="email" type="email" class="form-control" placeholder="이메일을 입력해주세요" required />
-                  <!-- <div id="emailError" class="invalid-feedback"></div> -->
                 </div>
                 <!-- 비밀번호 입력 -->
                 <div class="col-12">
+                  <!-- 비밀번호 자리수 제한 -->
                   <label for="address" class="form-label">Password</label> <small> <span id="makyText">:: 비밀번호 조건을 지켜주세요 ::</span></small>
                   <!-- input 태그의 required 속성으로 공백오류 처리 -->
                   <input
@@ -201,19 +192,19 @@
                     placeholder="비밀번호를 입력해주세요 (8자리 이상, 16자리 이하)"
                     required
                   />
-                  <!-- <div id="passwordError" class="invalid-feedback"></div>-->
-                  <!-- 비밀번호 자리수 제한 함수 넣기 -->
                 </div>
               </div>
 
               <!-- 위아래 간격 조정 -->
               <br />
               <br />
+
               <!-- 회원가입완료 버튼 -->
               <button style="background-color: rgb(49, 110, 49); color: white" id="signupButton" class="w-100 btn btn-lg" name="submit" type="submit">가입 완료하기</button>
 
               <!-- 로그인 페이지로 이동 -->
               <a style="text-decoration-line: none" href="/login"> <p class="text-center mt-4 mb-3 text-muted">이미 회원이신가요?</p></a>
+
               <!-- 위아래 간격 조정 -->
               <br />
               <br />
@@ -221,7 +212,6 @@
           </div>
         </div>
       </main>
-      <!-- </form> -->
     </div>
 
     <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -239,75 +229,70 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript">
-     
       function safetyPasswordPattern(str) {
-  
         var password = str.value;
         var message = "";
         var color = "";
         var checkPoint = 0;
-  
+
         // 입력값이 있을경우에만 실행
-        if(password.length) {
-  
-            // 최대 입력 글자수를 제한한다.
-            if(password.length < 8 || password.length > 16) {
-                message = ":: 최소 8자 이상, 최대 16자 이하 ::";
-                color = "#A23E48";
+        if (password.length) {
+          // 최대 입력 글자수를 제한한다.
+          if (password.length < 8 || password.length > 16) {
+            message = ":: 최소 8자 이상, 최대 16자 이하 ::";
+            color = "#A23E48";
+          }
+
+          // 문자열의 길이가 8 ~ 16 인경우
+          else {
+            // 비밀번호 문자열에 숫자 존재 여부 검사
+            var pattern1 = /[0-9]/; // 숫자
+            if (pattern1.test(pass) == false) {
+              checkPoint = checkPoint + 1;
             }
-  
-            // 문자열의 길이가 8 ~ 16 인경우
-            else {
-  
-                // 비밀번호 문자열에 숫자 존재 여부 검사
-                var pattern1 = /[0-9]/;  // 숫자
-                if(pattern1.test(pass) == false) {
-                    checkPoint = checkPoint + 1;
-                }
-  
-                // 비밀번호 문자열에 영문 소문자 존재 여부 검사
-                var pattern2 = /[a-z]/;
-                if(pattern2.test(pass) == false) {
-                    checkPoint = checkPoint + 1;
-                }
-  
-                // 비밀번호 문자열에 영문 대문자 존재 여부 검사
-                var pattern3 = /[A-Z]/;
-                if(pattern3.test(pass) == false) {
-                    checkPoint = checkPoint + 1;
-                }
-  
-                // 비밀번호 문자열에 특수문자 존재 여부 검사
-                var pattern4 = /[~!@#$%^&*()_+|<>?:{}]/;  // 특수문자
-                if(pattern4.test(pass) == false) {
-                    checkPoint = checkPoint + 1;
-                }
-  
-                if(checkPoint >= 3) {
-                    message = ":: 보안성이 취약한 비밀번호 ::";
-                    color = "#A23E48";
-                } else if(checkPoint == 2) {
-                    message = ":: 보안성이 낮은 비밀번호 ::";
-                    color = "#FF8C42";
-                } else if(checkPoint == 1) {
-                    message = ":: 보안성이 보통인 비밀번호 ::";
-                    color = "#FF8C42";
-                } else {
-                    message = ":: 보안성이 강력한 비밀번호 ::";
-                    color = "#0000CD";
-                }
+
+            // 비밀번호 문자열에 영문 소문자 존재 여부 검사
+            var pattern2 = /[a-z]/;
+            if (pattern2.test(pass) == false) {
+              checkPoint = checkPoint + 1;
             }
+
+            // 비밀번호 문자열에 영문 대문자 존재 여부 검사
+            var pattern3 = /[A-Z]/;
+            if (pattern3.test(pass) == false) {
+              checkPoint = checkPoint + 1;
+            }
+
+            // 비밀번호 문자열에 특수문자 존재 여부 검사
+            var pattern4 = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
+            if (pattern4.test(pass) == false) {
+              checkPoint = checkPoint + 1;
+            }
+
+            if (checkPoint >= 3) {
+              message = ":: 보안성이 취약한 비밀번호 ::";
+              color = "#A23E48";
+            } else if (checkPoint == 2) {
+              message = ":: 보안성이 낮은 비밀번호 ::";
+              color = "#FF8C42";
+            } else if (checkPoint == 1) {
+              message = ":: 보안성이 보통인 비밀번호 ::";
+              color = "#FF8C42";
+            } else {
+              message = ":: 보안성이 강력한 비밀번호 ::";
+              color = "#0000CD";
+            }
+          }
+        } else {
+          message = ":: 비밀번호를 입력해 주세요 ::";
+          color = "#000000";
         }
-  
-        else {
-            message = ":: 비밀번호를 입력해 주세요 ::";
-            color = "#000000";
-        }
-  
+
         document.getElementById("makyText").innerHTML = message;
         document.getElementById("makyText").style.color = color;
-    }
-  </script>
+      }
+    </script>
+
     <!-- signup.js 불러오기 -->
     <script type="text/javascript" src="/js/signup.js"></script>
   </body>

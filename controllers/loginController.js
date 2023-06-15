@@ -26,7 +26,6 @@ exports.login = async (res, req) => {
         req.session.idx = user.dataValues.member_id; // member_id가 유지될 수 있도록 idx를 설정
         console.log("session 객체 확인(login) :", req.session);
         console.log("로그인 성공");
-        // res.send("<script>alert('로그인에 성공하였습니다.');location.href='/home';</script>");
         req.session.save((err) => {
           if (err) throw err;
           res.send("<script>alert('로그인에 성공하였습니다.');location.href='/home';</script>");
@@ -50,35 +49,3 @@ exports.logout = function (req, res) {
     res.send("<script>alert('로그인을 먼저 해주세요.');location.href='/home';</script>");
   }
 };
-
-/*로그인 사용자 상품 스크랩 리스트*/
-// 아직 수정 중
-// const getProductList = async (id) => {
-//   try {
-//     const ProductList = await member.findAll({
-//       attributes: ["Name", "color"],
-//       where: {
-//         member_id: id,
-//       },
-//     });
-//     return ProductList;
-//   } catch (err) {
-//     return err;
-//   }
-// };
-
-/*로그인 사용자 스토어 스크랩 리스트*/
-// 아직 수정 중
-// const getStoreList = async (id) => {
-//   try {
-//     const StoreList = await member.findAll({
-//       attributes: ["Name", "color"],
-//       where: {
-//         member_id: id,
-//       },
-//     });
-//     return StoreList;
-//   } catch (err) {
-//     return err;
-//   }
-// };

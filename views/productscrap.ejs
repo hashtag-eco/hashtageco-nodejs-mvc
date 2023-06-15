@@ -90,29 +90,21 @@
     <main class="py-4 container">
       <div style="background-color: rgb(49, 110, 49)" class="d-flex align-items-center p-3 my-3 text-white rounded shadow-sm">
         <div class="lh-1">
-          <!-- 태그별 내용 바꿔도 됨 -->
           <h1 class="h5 mb-2 text-white lh-1">Eco Scrap</h1>
           <small>에코 상품 스크랩북</small>
         </div>
       </div>
-
-      <!-- 스크랩북 ver2 -->
+      <!-- 스크랩 -->
       <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <!-- <h6 class="border-bottom pb-2 mb-0">Suggestions</h6> -->
         <% scrapList.forEach(s => { %>
-        <!-- 스크랩 1 -->
+
         <div class="d-flex text-muted pt-3">
           <img src="<%= s.dataValues.image_link %>" style="width: 32px; height: 32px; margin-right: 10px" />
-          <!-- <title>Placeholder</title> -->
-          <!-- <rect width="100%" height="100%" fill="#007bff" /> -->
-          <!-- <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text> -->
 
           <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
             <div class="d-flex justify-content-between">
               <strong class="text-gray-dark"><%= s.dataValues.product_name %></strong>
               <div>
-                <!-- 해시태그에코 내 상품상세페이지로 이동하는 버튼 -->
-                <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button> -->
                 <!-- 스크랩을 취소하는 버튼 -->
                 <button
                   type="button"
@@ -133,10 +125,6 @@
           </div>
         </div>
         <% }) %>
-
-        <!-- <small class="d-block text-end mt-3">
-          <a href="#">All suggestions</a>
-        </small> -->
       </div>
     </main>
 

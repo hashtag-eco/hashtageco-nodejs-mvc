@@ -9,8 +9,6 @@ exports.signup = async (res, req) => {
   } else {
     db.member
       .create({
-        // create
-        // member_id: req.body.member_id,
         name: req.body.name,
         nickname: req.body.nickname,
         email: req.body.email,
@@ -18,7 +16,6 @@ exports.signup = async (res, req) => {
       })
       .then((result) => {
         console.log("회원가입 완료");
-        // res.render("home");
         res.send("<script>alert('회원가입이 완료되었습니다. 로그인을 진행해주세요.');location.href='/login';</script>");
       })
       .catch((err) => {
@@ -39,7 +36,6 @@ exports.profile = async (req, res) => {
   });
   console.log(memberData);
   console.log("session 객체 확인(profile) :", req.session);
-  // memberData = memberData[0].dataValues;
   if (req.session.login == true) {
     res.render("profile", { memberData: memberData });
   } else {
