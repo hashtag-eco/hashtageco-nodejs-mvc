@@ -28,10 +28,10 @@
           <!-- 왼쪽 부분 -->
           <div class="row">
             <div class="col-lg-4" style="height: 800px; margin-top: 30px;">
-              <div class="section-title">
-                <h2>스토어 이름</h2>
-                <p> 주소 </p>
-                <p> 웹 주소 </p>
+              <div id="selected_store" class="section-title">
+                <h2 id="store_name">스토어 이름</h2>
+                <p id="store_address"> 주소 </p>
+                <a href=""  id="web_link"> 웹 주소 </a>
               </div>
 
               <!-- 키워드 선택 버튼 -->
@@ -101,7 +101,7 @@
                       </div>
                       <div class="col-10 mb-1 small"><%= s.dataValues.address %></div>
                       <!-- <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div> -->
-                      <button type="button" onclink="showSpecificLocation('서울특별시 관악구 관악로 1')" class="btn btn-sm btn-outline-secondary" selected="true"> 위치 지도에서 보기 </button>
+                      <button type="button" onclick='showSpecificLocation(<%- JSON.stringify(s.dataValues.address)%>, <%- JSON.stringify(s.dataValues.store_name)%>, <%- JSON.stringify(s.dataValues.web_link)%>)' class="btn btn-sm btn-outline-secondary" selected="true"> 위치 지도에서 보기 </button>
                       <!-- <a href="<%= s.dataValues.web_link %>"><%= s.dataValues.web_link %></a> -->
                     </a>  
                   <% }) %>    
@@ -129,7 +129,6 @@
               var geocoder = new kakao.maps.services.Geocoder();
 
               var positions = <%- JSON.stringify(positionss) %>;
-              var addr = <%- JSON.stringify(addresses) %>;
 
               // 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
               var bounds = new kakao.maps.LatLngBounds(); //추가한 코드
@@ -207,21 +206,32 @@
                 console.log("함수 성공");
               }
 
-              async function showSpecificLocation(storeAdd) {
+              async function showSpecificLocation(storeAdd, name, link) {
 
                 await geocoder.addressSearch(storeAdd, function(result, status) {
 
-                  alert(storeAdd);
                   // 정상적으로 검색이 완료됐으면
                   if (status === kakao.maps.services.Status.OK) {
-                      let cooords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                  }
+                    console.log('주소 변환')
+                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-                  map.setCenter(cooords);
+                    map.setCenter(coords);
+                  } 
                 })
+                setInnerText(name, storeAdd, link);
 
               }
 
+              function setInnerText(name, address, link) {
+                const element1 = document.getElementById('store_name');
+                element1.innerText = name;
+                const element2 = document.getElementById('store_address');
+                element2.innerText = address;
+                const element3 = document.getElementById('web_link');
+                element3.innerText = link;
+                element3.href = link;
+
+               }
 
               map.setCenter(37.5912999, 127.0221068);
             </script>
