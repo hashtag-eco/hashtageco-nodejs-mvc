@@ -50,3 +50,20 @@ exports.profile = async (req, res) => {
     res.send("<script>alert('로그인을 먼저 해주세요.');location.href='/login';</script>");
   }
 };
+
+exports.passwordUpdate = async (req, res) => {
+  console.log("비번변경");
+  let memberId = req.session.idx;
+  console.log(memberId);
+  console.log(req.body.newpassword);
+
+  await Member.update({
+    password: req.body.newpassword
+  },
+  {
+    where: {member_id: memberId,
+    },
+  });
+
+  res.send("<script>alert('비밀번호가 변경되었습니다.');location.href='/profile';</script>")
+};
