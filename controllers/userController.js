@@ -49,18 +49,17 @@ exports.passwordUpdate = async (req, res) => {
   console.log(memberId);
   console.log(req.body.newpassword);
   if (req.body.newpassword.length < 8 || req.body.newpassword.length > 16) {
-    res.send("<script>alert('회원가입에 실패하였습니다. 비밀번호는 8자리 이상 16 자리 이하여야 합니다.');location.href='/profile';</script>");
-  }
-
-  else {
-    await Member.update({
-      password: req.body.newpassword
-    },
-    {
-      where: {member_id: memberId,
+    res.send("<script>alert('비밀번호 변경에 실패하였습니다. 비밀번호는 8자리 이상 16 자리 이하여야 합니다.');location.href='/profile';</script>");
+  } else {
+    await Member.update(
+      {
+        password: req.body.newpassword,
       },
-    });
+      {
+        where: { member_id: memberId },
+      }
+    );
 
-    res.send("<script>alert('비밀번호가 변경되었습니다.');location.href='/profile';</script>")
+    res.send("<script>alert('비밀번호가 변경되었습니다.');location.href='/profile';</script>");
   }
 };
