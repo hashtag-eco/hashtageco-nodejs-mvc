@@ -6,7 +6,7 @@ module.exports = {
     username: "cc",
     password: "password",
     database: "eco_db",
-    host: "34.64.151.238",
+    host: "34.64.181.72",
     port: 3306,
     dialect: "mysql",
   },
