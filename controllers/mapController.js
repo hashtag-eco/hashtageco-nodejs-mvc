@@ -7,23 +7,21 @@ const placeList = {};
 //카카오api에 마커 띄워 보여줄 db에 저장된 스토어 정보 담긴 배열 구함
 const getPositions = async () => {
   let stores = await Map.findAll({
-    attributes: ['store_name', 'address', 'region_name']
+    attributes: ["store_name", "address", "region_name"],
   });
   console.log("a");
 
-  stores.forEach(element => {
+  stores.forEach((element) => {
     placeList.title = element.dataValues.store_name;
     placeList.address = element.dataValues.address;
-    positions.push({...placeList});
+    positions.push({ ...placeList });
   });
-console.log('a');
-}
-
+  console.log("a");
+};
 
 exports.map = (req, res) => {
   res.render("map");
 };
-
 
 //스토어 목록 가져오는 함수
 exports.getStore = async (req, res) => {
@@ -32,41 +30,38 @@ exports.getStore = async (req, res) => {
   let showlist;
   try {
     switch (category) {
-      case 'zerowaste' : {
+      case "zerowaste": {
         showlist = await Map.findAll({
-          attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count'],
+          attributes: ["store_id", "store_name", "address", "region_name", "web_link", "scrap_count"],
           where: {
-            is_zero_waste: 1
-          }
-        })
+            is_zero_waste: 1,
+          },
+        });
         break;
       }
-      case 'upcycling' : {
+      case "upcycling": {
         showlist = await Map.findAll({
-          attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count'],
+          attributes: ["store_id", "store_name", "address", "region_name", "web_link", "scrap_count"],
           where: {
-            is_upcycling: 1
-          }
-        })
+            is_upcycling: 1,
+          },
+        });
         break;
       }
-      case 'lowcarbon' : {
+      case "lowcarbon": {
         showlist = await Map.findAll({
-          attributes: ['store_id', 'store_name', 'address', 'region_name', 'web_link', 'scrap_count'],
+          attributes: ["store_id", "store_name", "address", "region_name", "web_link", "scrap_count"],
           where: {
-            is_low_carbon: 1
-          }
-        })
+            is_low_carbon: 1,
+          },
+        });
         break;
       }
     }
-  }catch(err) {
+  } catch (err) {
     return err;
   }
   await getPositions();
   console.log(showlist);
-  res.render("mapwithstore", {showlist: showlist, positionss: positions, category: category});
-}
-
-
- 
+  res.render("mapwithstore", { showlist: showlist, positionss: positions, category: category });
+};
