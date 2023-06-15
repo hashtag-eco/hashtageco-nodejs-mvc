@@ -38,7 +38,12 @@ exports.join = (req, res) => {
 
 // 로그인 view 랜더링
 exports.login = (req, res) => {
-  res.render("login");
+  if (req.session.login == true) {
+    console.log("session 객체 확인(home-login) :", req.session);
+    res.send("<script>alert('이미 로그인된 상태입니다.');location.href='/home';</script>");
+  } else {
+    res.render("login");
+  }
 };
 
 // 로그인 실패 시 view 랜더링
