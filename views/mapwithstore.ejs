@@ -95,9 +95,9 @@
                     <!-- <div class="col-10 mb-1 small"><%= s.dataValues.web_link %></div> -->
                     <button
                       type="button"
-                      onclick="showSpecificLocation(<%- JSON.stringify(s.dataValues.address)%>, <%- JSON.stringify(s.dataValues.store_name)%>, <%- JSON.stringify(s.dataValues.web_link)%>)"
                       class="btn btn-sm btn-outline-secondary"
                       selected="true"
+                      onclick='showSpecificLocation("/",<%- JSON.stringify(s.dataValues.address)%>, <%- JSON.stringify(s.dataValues.store_name)%>, <%- JSON.stringify(s.dataValues.web_link)%>)'
                     >
                       위치 지도에서 보기
                     </button>
@@ -204,7 +204,7 @@
                   console.log("함수 성공");
                 }
 
-                async function showSpecificLocation(storeAdd, name, link) {
+                async function showSpecificLocation(a, storeAdd, name, link) {
 
                   await geocoder.addressSearch(storeAdd, function(result, status) {
 
