@@ -1,6 +1,6 @@
 # hashtageco
 
-<h3> [구현 영상](https://www.youtube.com/watch?v=I6dJPlkky9o) </h3>
+### [구현 영상](https://www.youtube.com/watch?v=I6dJPlkky9o) 
 
 <p align="center">
   <img src="https://github.com/Im-suhyeon/hashtageco/assets/100345983/6717ed17-8d25-4bbf-b80d-78b4afabb7de">
