@@ -1,7 +1,7 @@
 # hashtageco
 <h3> 구현 영상 </h3>
 [![Video Label](http://img.youtube.com/vi/I6dJPlkky9o/0.jpg)](https://youtu.be/I6dJPlkky9o)
-<br>
+
 <p align="center">
   <img src="https://github.com/Im-suhyeon/hashtageco/assets/100345983/6717ed17-8d25-4bbf-b80d-78b4afabb7de">
 </p>
