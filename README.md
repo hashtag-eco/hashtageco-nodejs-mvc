@@ -1,9 +1,12 @@
-# hashtageco-nodejs-mvc
-2023 성신여자대학교 서버시스템구축실습 팀 프로젝트 <br>
-팀장 : 이유진 / 팀원 : 임수현, 강소연, 이지현, 김가경
+# 🌱HashtagEco(해시태그에코)
+2023 서버시스템 구축 및 실습 프로젝트 
+<br><br>
 
-### [구현 영상](https://www.youtube.com/watch?v=I6dJPlkky9o) 
+## [#️⃣ 구현 영상](https://www.youtube.com/watch?v=I6dJPlkky9o) 
+[![Video Label](http://img.youtube.com/vi/I6dJPlkky9o/0.jpg)](https://youtu.be/I6dJPlkky9o)
+<br><br>
 
+## [#️⃣ 발표 자료](https://github.com/s-h-im/hashtageco-nodejs-mvc) 
 <p align="center">
   <img src="https://github.com/Im-suhyeon/hashtageco/assets/100345983/6717ed17-8d25-4bbf-b80d-78b4afabb7de">
 </p>
