@@ -1,7 +1,6 @@
-# hashtageco
-2023 성신여자대학교 서버시스템구축실습 팀 프로젝트
-팀장 : 이유진
-팀원 : 임수현, 강소연, 이지현, 김가경
+# hashtageco-nodejs-mvc
+2023 성신여자대학교 서버시스템구축실습 팀 프로젝트 <br>
+팀장 : 이유진 / 팀원 : 임수현, 강소연, 이지현, 김가경
 
 ### [구현 영상](https://www.youtube.com/watch?v=I6dJPlkky9o) 
 
